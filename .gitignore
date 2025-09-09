@@ -1,0 +1,14 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+
+# Environment files
+.env
+
+# SQLite test database
+test.db
+
+# Docker local Postgres volume
+postgres-data/
