@@ -1,6 +1,5 @@
-FastAPI
-uvicorn
-sqlalchemy
+fastapi
+uvicorn[standard]
 pydantic
 python-dotenv
-fastapi[all]
+psycopg2-binary==2.9.9
