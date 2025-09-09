@@ -1,41 +1,43 @@
-import os
-import psycopg2 as ps
-from dotenv import load_dotenv
+from typing import Dict, List, Optional
 
-# Load environment variables from a .env file if present
-load_dotenv()
+from . import schemas
 
-# Read database configuration from environment variables
-db_host = os.getenv("DB_HOST", "localhost")
-db_port = os.getenv("DB_PORT", "5432")
-db_user = os.getenv("DB_USER", "postgres")
-db_password = os.getenv("DB_PASSWORD")
-db_name = os.getenv("DB_NAME")
 
-mycon = None
-cr = None
+_items: Dict[int, schemas.Item] = {}
+_next_id: int = 1
 
-def _try_connect():
-    global mycon, cr
-    if mycon is not None:
-        return
-    if not db_password or not db_name:
-        print(
-            "Database not configured: set DB_PASSWORD and DB_NAME or provide DATABASE_URL. Skipping connection."
-        )
-        return
-    try:
-        mycon = ps.connect(
-            host=db_host,
-            user=db_user,
-            password=db_password,
-            dbname=db_name,
-            port=db_port,
-        )
-        cr = mycon.cursor()
-        print("Connected")
-    except ps.Error as e:
-        print(f"Database connection failed: {e}")
 
-# Optionally trigger a best-effort connection on import (no crash on failure)
-_try_connect()
+def _get_next_id() -> int:
+    global _next_id
+    current = _next_id
+    _next_id += 1
+    return current
+
+
+def create_item(item: schemas.ItemCreate) -> schemas.Item:
+    item_id = _get_next_id()
+    new_item = schemas.Item(id=item_id, name=item.name, description=item.description)
+    _items[item_id] = new_item
+    return new_item
+
+
+def get_items(skip: int = 0, limit: int = 10) -> List[schemas.Item]:
+    values = list(_items.values())
+    return values[skip : skip + limit]
+
+
+def get_item(item_id: int) -> Optional[schemas.Item]:
+    return _items.get(item_id)
+
+
+def update_item(item_id: int, item: schemas.ItemUpdate) -> Optional[schemas.Item]:
+    existing = _items.get(item_id)
+    if existing is None:
+        return None
+    updated = existing.model_copy(update=item.model_dump(exclude_unset=True))
+    _items[item_id] = updated
+    return updated
+
+
+def delete_item(item_id: int) -> Optional[schemas.Item]:
+    return _items.pop(item_id, None)
