@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { toggleTheme } from "../../features/themeSlice";
 import { IoSunnyOutline } from "react-icons/io5";
@@ -20,9 +19,9 @@ const Navbar = () => {
       <div className="w-full flex items-center justify-between px-3 md:px-6 py-4 relative">
         <div className="flex items-center gap-3">
           <SideBar_sm />
-          <Link className="text-xl font-bold text-gray-900" to={"/home"}>
+          <a className="text-xl font-bold text-gray-900" href="/home">
             Smart Student Hub
-          </Link>
+          </a>
         </div>
         <div className="flex items-center gap-6">
           <div>
@@ -42,12 +41,12 @@ const Navbar = () => {
             Features
           </a>
 
-          <Link
+          <a
             className="text-gray-600 hover:text-[#137fec] hidden sm:block"
-            to="/login"
+            href="/login"
           >
             Log In
-          </Link>
+          </a>
           <button
             className="sm:hidden rounded border px-3 py-1 text-sm text-gray-700 hover:bg-gray-100 cursor-pointer"
             onClick={() => setIsMobileMenuOpen((prev) => !prev)}
@@ -57,12 +56,12 @@ const Navbar = () => {
           >
             Menu
           </button>
-          <Link
+          <a
             className="rounded-lg bg-[#6C47FF] px-4 py-2 text-white hover:bg-[#6C47FF]/80"
-            to="/sign-up"
+            href="/sign-up"
           >
             Sign Up
-          </Link>
+          </a>
         </div>
         {isMobileMenuOpen && (
           <div
@@ -79,22 +78,22 @@ const Navbar = () => {
               >
                 Features
               </a>
-              <Link
+              <a
                 className="px-3 py-2 rounded hover:bg-gray-100 text-gray-700"
-                to="/login"
+                href="/login"
                 role="menuitem"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 Log In
-              </Link>
-              <Link
+              </a>
+              <a
                 className="px-3 py-2 rounded hover:bg-gray-100 text-gray-700"
-                to="/sign-up"
+                href="/sign-up"
                 role="menuitem"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 Sign Up
-              </Link>
+              </a>
             </div>
           </div>
         )}

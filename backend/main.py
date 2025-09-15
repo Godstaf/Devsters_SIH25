@@ -1,13 +1,10 @@
-from fastapi import FastAPI, Request
-from fastapi.responses import HTMLResponse, FileResponse
-from fastapi.templating import Jinja2Templates
+from fastapi import FastAPI
+from fastapi.responses import FileResponse
 from fastapi.staticfiles import StaticFiles
-from app.routers import items
+from pathlib import Path
+from backend.routers import items
 
 app = FastAPI()
-
-# Templates remain for any server-rendered pages if needed
-templates = Jinja2Templates(directory="templates")
 
 # Legacy static assets (if any)
 app.mount("/static", StaticFiles(directory="static"), name="static")
@@ -16,11 +13,19 @@ app.mount("/static", StaticFiles(directory="static"), name="static")
 app.include_router(items.router, prefix="/api")
 
 # Frontend (React) build output directory
-FRONTEND_DIR = "frontend"
+FRONTEND_DIR = Path("frontend").resolve()
+INDEX_HTML = FRONTEND_DIR / "index.html"
 
-# Mount the built frontend at root; html=True serves index.html for unknown paths (SPA)
-app.mount("/", StaticFiles(directory=FRONTEND_DIR, html=True), name="frontend")
-@app.get("/{full_path:path}", response_class=HTMLResponse)
-async def serve_react_app(request: Request, full_path: str):
-    return templates.TemplateResponse("index.html", {"request": request})
+# Serve SPA assets and files: return file if it exists, else fallback to index.html
+@app.get("/{full_path:path}")
+async def serve_spa(full_path: str):
+    # Block API path from being handled here
+    if full_path.startswith("api/"):
+        return FileResponse(INDEX_HTML)  # Should not happen due to router, but safe fallback
+
+    candidate = (FRONTEND_DIR / full_path).resolve()
+    # Prevent path traversal outside FRONTEND_DIR
+    if FRONTEND_DIR in candidate.parents and candidate.is_file():
+        return FileResponse(candidate)
+    return FileResponse(INDEX_HTML)
 
