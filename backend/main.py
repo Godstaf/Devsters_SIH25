@@ -1,13 +1,8 @@
-from fastapi import FastAPI, Request
-from fastapi.responses import HTMLResponse, FileResponse
-from fastapi.templating import Jinja2Templates
+from fastapi import FastAPI
 from fastapi.staticfiles import StaticFiles
-from app.routers import items
+from backend.routers import items
 
 app = FastAPI()
-
-# Templates remain for any server-rendered pages if needed
-templates = Jinja2Templates(directory="templates")
 
 # Legacy static assets (if any)
 app.mount("/static", StaticFiles(directory="static"), name="static")
