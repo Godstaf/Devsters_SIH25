@@ -1,91 +1,163 @@
-# FastAPI Project
+# Devsters SIH25 Project
 
-This is a basic FastAPI project structure that includes essential components for building a web application. 
+A full-stack application with FastAPI backend and React frontend, designed for Smart India Hackathon 2025.
 
 ## Project Structure
 
 ```
-fastapi-project
-├── app
+devsters-sih25/
+├── backend/
 │   ├── __init__.py
 │   ├── main.py
 │   ├── crud.py
 │   ├── database.py
-│   ├── models.py
 │   ├── schemas.py
-│   └── routers
+│   └── routers/
 │       ├── __init__.py
 │       └── items.py
-├── static
-│   └── css
-│       └── style.css
-├── templates
-│   └── index.html
-├── .env
-├── README.md
+├── frontend/
+│   ├── src/
+│   │   ├── components/
+│   │   ├── features/
+│   │   └── store/
+│   ├── package.json
+│   └── vite.config.js
+├── static/
+│   └── css/
+├── docker-compose.yml
+├── Dockerfile
+├── init-db.sql
+├── env.example
 ├── requirements.txt
-└── SECURITY.md
+└── README.md
 ```
 
-## Installation
+## Quick Start with Docker (Recommended)
 
-To get started with this project, clone the repository and install the required dependencies:
+The easiest way to get started is using Docker Compose, which sets up everything including the database:
 
+### Prerequisites
+- Docker Desktop installed
+- Git
+
+### Setup Steps
+
+1. **Clone the repository:**
+   ```bash
+   git clone <your-repo-url>
+   cd devsters-sih25
+   ```
+
+2. **Start all services:**
+   ```bash
+   docker-compose up --build
+   ```
+
+3. **Access the application:**
+   - Frontend: http://localhost:8000
+   - Backend API: http://localhost:8000/api
+   - Database: localhost:5432
+
+### What Docker Compose Sets Up
+
+- **PostgreSQL Database**: Persistent database with sample data
+- **Backend API**: FastAPI application with auto-reload
+- **Frontend**: React application with Vite build system
+- **Data Persistence**: Database data persists between restarts
+
+## Database Configuration
+
+The database is automatically configured with:
+- **Database Name**: `devsters_db`
+- **Username**: `devsters_user`
+- **Password**: `devsters_password`
+- **Port**: `5432`
+
+### Database Features
+
+- **Persistent Storage**: Data survives container restarts
+- **Health Checks**: Backend waits for database to be ready
+- **Sample Data**: Pre-populated with test users and items
+- **Initialization Script**: `init-db.sql` runs on first startup
+
+## Development
+
+### Backend Development
+The backend runs with auto-reload when files change. API documentation is available at:
+- Swagger UI: http://localhost:8000/docs
+- ReDoc: http://localhost:8000/redoc
+
+### Frontend Development
+The frontend uses Vite for fast development with hot module replacement.
+
+### Database Management
+
+**Connect to the database:**
 ```bash
-pip install -r requirements.txt
+# Using Docker
+docker exec -it devsters-db psql -U devsters_user -d devsters_db
+
+# Or using any PostgreSQL client
+# Host: localhost
+# Port: 5432
+# Database: devsters_db
+# Username: devsters_user
+# Password: devsters_password
 ```
 
-## Usage
-
-To run the application, execute the following command:
-
+**Reset the database:**
 ```bash
-uvicorn app.main:app --reload
+# Stop services
+docker-compose down
+
+# Remove database volume (WARNING: This deletes all data)
+docker volume rm devsters_sih25_postgres_data
+
+# Start services again
+docker-compose up --build
 ```
-
-Visit `http://127.0.0.1:8000` in your browser to access the application.
-
-## Features
-
-- CRUD operations for items
-- Database connection management
-- Pydantic models for data validation
-- Static files serving (CSS)
-- HTML templating
 
 ## Environment Variables
 
-Make sure to configure your environment variables in the `.env` file for database connections and other settings. See `.env.example` for the required keys.
+Copy `env.example` to `.env` and modify as needed:
 
-### Local Postgres via Docker (isolated from system Postgres)
-
-1. Create a `.env` in the project root with either a `DATABASE_URL` or the individual variables:
-
-```
-# Single URL (preferred)
-DATABASE_URL=postgresql+psycopg2://postgres:postgres@localhost:5433/sih25
-
-# Or individual variables
-DB_HOST=localhost
-DB_PORT=5433
-DB_NAME=sih25
-DB_USER=postgres
-DB_PASSWORD=postgres
+```bash
+cp env.example .env
 ```
 
-2. Start Postgres with Docker (requires Docker Desktop on Windows):
+## Manual Setup (Without Docker)
 
-```
-docker run --name sih25-postgres -e POSTGRES_PASSWORD=postgres -e POSTGRES_DB=sih25 -p 5433:5432 -v %cd%/postgres-data:/var/lib/postgresql/data -d postgres:16-alpine
-```
+If you prefer to run without Docker:
 
-3. Run the app:
+1. **Install PostgreSQL** locally
+2. **Create database** and user as specified in `env.example`
+3. **Install Python dependencies:**
+   ```bash
+   pip install -r requirements.txt
+   ```
+4. **Install Node.js dependencies:**
+   ```bash
+   cd frontend
+   npm install
+   ```
+5. **Run backend:**
+   ```bash
+   uvicorn backend.main:app --reload
+   ```
+6. **Run frontend:**
+   ```bash
+   cd frontend
+   npm run dev
+   ```
 
-```
-uvicorn app.main:app --reload
-```
+## Features
 
-Notes: Using port 5433 avoids conflicts with any global Postgres on your PC. Data persists in `postgres-data/` which is ignored by Git.
+- **Full-stack application** with FastAPI and React
+- **Persistent PostgreSQL database** with Docker
+- **CRUD operations** for items and users
+- **Modern UI** with Tailwind CSS
+- **Development-friendly** with hot reload
+- **Production-ready** with Docker containers
 
 ## Security
 
