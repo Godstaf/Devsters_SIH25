@@ -3,31 +3,32 @@ import { FiMenu } from "react-icons/fi";
 import { AnimatePresence, motion } from "motion/react";
 import { CiGrid42 } from "react-icons/ci";
 import { CgProfile } from "react-icons/cg";
-import { NavLink, useLocation } from "react-router-dom";
 import { MdCancel } from "react-icons/md";
 import { FiBriefcase } from "react-icons/fi";
 import { FaRegFileAlt } from "react-icons/fa";
 import { FaUserGraduate } from "react-icons/fa";
 import { HiChevronDown } from "react-icons/hi";
 
-
 const SideBar_sm = () => {
-  const location = useLocation();
   const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth < 768);
   const [hidden, setHidden] = useState(true);
   const [expand, setExpand] = useState(false);
+
   function btnRouter() {
+    const pathname = window.location.pathname;
     if (
-      location.pathname === "/home" ||
-      location.pathname === "/login" ||
-      location.pathname === "/sign-up" ||
-      location.pathname === "/"
+      pathname === "/home" ||
+      pathname === "/login" ||
+      pathname === "/sign-up" ||
+      pathname === "/"
     ) {
       return true;
     }
 
-    return isSmallScreen
+    return isSmallScreen;
   }
+
+  const isActive = (path) => (window.location.pathname === path ? "bg-[#6C47FF] text-white" : "hover:bg-slate-300");
 
   useEffect(() => {
     const handleResize = () => setIsSmallScreen(window.innerWidth < 768);
@@ -67,80 +68,33 @@ const SideBar_sm = () => {
                   </button>
                 </div>
                 <div className="text-black">
-                  <NavLink
-                    className={({ isActive }) =>
-                      `text-lg mb-3 flex gap-2 rounded-lg p-2 ${
-                        isActive
-                          ? "bg-[#6C47FF] text-white"
-                          : "hover:bg-slate-300"
-                      }`
-                    }
-                    to={"/dashboard"}
-                  >
+                  <a className={`text-lg mb-3 flex gap-2 rounded-lg p-2 ${isActive("/dashboard")}`} href="/dashboard">
                     <CiGrid42 size={27} />
                     Dashboard
-                  </NavLink>
-                  <NavLink
-                    className={({ isActive }) =>
-                      `text-lg mb-3 flex gap-2 rounded-lg p-2 ${
-                        isActive
-                          ? "bg-[#6C47FF] text-white"
-                          : "hover:bg-slate-300"
-                      }`
-                    }
-                    to={"/profile"}
-                  >
+                  </a>
+                  <a className={`text-lg mb-3 flex gap-2 rounded-lg p-2 ${isActive("/profile")}`} href="/profile">
                     <CgProfile size={27} />
                     Profile
-                  </NavLink>
-                  <NavLink
-                    className={({ isActive }) =>
-                      `text-lg mb-3 flex gap-2 rounded-lg p-2 ${
-                        isActive
-                          ? "bg-[#6C47FF] text-white"
-                          : "hover:bg-slate-300"
-                      }`
-                    }
-                    to={"/portfolio"}
-                  >
+                  </a>
+                  <a className={`text-lg mb-3 flex gap-2 rounded-lg p-2 ${isActive("/portfolio")}`} href="/portfolio">
                     <FiBriefcase size={27} />
                     Portfolio
-                  </NavLink>
-                  <NavLink
-                    className={({ isActive }) =>
-                      `text-lg mb-3 flex gap-2 rounded-lg p-2 ${
-                        isActive
-                          ? "bg-[#6C47FF] text-white"
-                          : "hover:bg-slate-300"
-                      }`
-                    }
-                    to={"/internships"}
-                  >
+                  </a>
+                  <a className={`text-lg mb-3 flex gap-2 rounded-lg p-2 ${isActive("/internships")}`} href="/internships">
                     <FaUserGraduate size={27} />
                     Internships
-                  </NavLink>
-                  <NavLink
-                    className={({ isActive }) =>
-                      `text-lg mb-3 flex gap-2 rounded-lg p-2 ${
-                        isActive
-                          ? "bg-[#6C47FF] text-white"
-                          : "hover:bg-slate-300"
-                      }`
-                    }
-                    to={"/approvals"}
-                  >
+                  </a>
+                  <a className={`text-lg mb-3 flex gap-2 rounded-lg p-2 ${isActive("/approvals")}`} href="/approvals">
                     <FaRegFileAlt size={27} />
                     Approvals
-                  </NavLink>
+                  </a>
                   <div className="text-lg mb-3 items-center flex-col gap-2 hover:bg-slate-300 rounded-lg p-2">
                     <div>
                       <div className="flex gap-2">
                         <FaRegFileAlt size={27} />
                         Expandable
                         <button
-                          className={`flex justify-center items-center ${
-                            expand ? "rotate-180" : ""
-                          }`}
+                          className={`flex justify-center items-center ${expand ? "rotate-180" : ""}`}
                           onClick={() => setExpand((prev) => !prev)}
                         >
                           <HiChevronDown size={27} />
@@ -148,20 +102,14 @@ const SideBar_sm = () => {
                       </div>
                       {expand && (
                         <div className="flex flex-col mt-4 ml-8">
-                          <NavLink
-                            className="text-lg mb-2 flex gap-2 hover:bg-slate-400 rounded-lg p-2"
-                            to={"/workshops"}
-                          >
+                          <a className="text-lg mb-2 flex gap-2 hover:bg-slate-400 rounded-lg p-2" href="/workshops">
                             <CiGrid42 size={27} />
                             Conferences & Workshops
-                          </NavLink>
-                          <NavLink
-                            className="text-lg mb-2 flex gap-2 hover:bg-slate-400 rounded-lg p-2"
-                            to={"/engagements"}
-                          >
+                          </a>
+                          <a className="text-lg mb-2 flex gap-2 hover:bg-slate-400 rounded-lg p-2" href="/engagements">
                             <CgProfile size={27} />
                             Engagements
-                          </NavLink>
+                          </a>
                         </div>
                       )}
                     </div>
