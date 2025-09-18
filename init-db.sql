@@ -8,7 +8,7 @@
 CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 
 -- Create a sample table for testing
-CREATE TABLE IF NOT EXISTS "user" (
+CREATE TABLE IF NOT EXISTS "users" (
     name VARCHAR(200) NOT NULL,
     email VARCHAR(200) PRIMARY KEY,
     password VARCHAR(1000) NOT NULL

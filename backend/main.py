@@ -18,23 +18,10 @@ app.include_router(items.router, prefix="/api")
 FRONTEND_DIR = Path("frontend").resolve()
 INDEX_HTML = FRONTEND_DIR / "index.html"
 
-# Serve SPA assets and files: return file if it exists, else fallback to index.html
-@app.get("/{full_path:path}")
-async def serve_spa(full_path: str):
-    # Block API path from being handled here
-    if full_path.startswith("api/"):
-        return FileResponse(INDEX_HTML)  # Should not happen due to router, but safe fallback
-
-    candidate = (FRONTEND_DIR / full_path).resolve()
-    # Prevent path traversal outside FRONTEND_DIR
-    if FRONTEND_DIR in candidate.parents and candidate.is_file():
-        return FileResponse(candidate)
-    return FileResponse(INDEX_HTML)
 
 
 
-
-# Login API (converted from Flask)
+# Login API 
 @app.post("/loginit")
 async def loginit(email: str = Form(...), password: str = Form(...)):
     if not password:
@@ -42,11 +29,13 @@ async def loginit(email: str = Form(...), password: str = Form(...)):
 
     hashed_password = hashlib.sha256(password.encode()).hexdigest()
 
-    query = 'SELECT name FROM "user" WHERE email = %s AND password = %s'
+    # Table renamed to users (avoid reserved keyword "user")
+    query = 'SELECT name FROM users WHERE email = %s AND password = %s'
     values = (email, hashed_password)
 
     with get_connection() as conn:
         with conn.cursor() as cr:
+
             cr.execute(query, values)
             result = cr.fetchone()
 
@@ -61,3 +50,17 @@ async def loginit(email: str = Form(...), password: str = Form(...)):
     resp.set_cookie("userEmail", email, httponly=True)
     resp.set_cookie("userName", first_name, httponly=True)
     return resp
+
+# Serve SPA assets and files: return file if it exists, else fallback to index.html
+# IMPORTANT: This catch-all must be defined AFTER all API routes so it doesn't intercept them
+@app.get("/{full_path:path}")
+async def serve_spa(full_path: str):
+    # Block API path from being handled here
+    if full_path.startswith("api/"):
+        return FileResponse(INDEX_HTML)  # Should not happen due to router, but safe fallback
+
+    candidate = (FRONTEND_DIR / full_path).resolve()
+    # Prevent path traversal outside FRONTEND_DIR
+    if FRONTEND_DIR in candidate.parents and candidate.is_file():
+        return FileResponse(candidate)
+    return FileResponse(INDEX_HTML)
