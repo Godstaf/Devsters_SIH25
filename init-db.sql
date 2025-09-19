@@ -14,14 +14,5 @@ CREATE TABLE IF NOT EXISTS "users" (
     password VARCHAR(1000) NOT NULL
 );
 
--- Create a sample table for items (matching your existing schema)
-CREATE TABLE IF NOT EXISTS items (
-    id SERIAL PRIMARY KEY,
-    name VARCHAR(100) NOT NULL,
-    description TEXT,
-    price DECIMAL(10, 2),
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-);
 
 
