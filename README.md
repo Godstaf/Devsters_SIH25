@@ -27,8 +27,8 @@ devsters-sih25/
 ├── docker-compose.yml
 ├── Dockerfile
 ├── init-db.sql
-├── env.example
 ├── requirements.txt
+├── SECURITY.md
 └── README.md
 ```
 
@@ -50,28 +50,29 @@ The easiest way to get started is using Docker Compose, which sets up everything
 
 2. **Start all services:**
    ```bash
-   docker-compose up --build
+   docker compose up --build
    ```
 
 3. **Access the application:**
-   - Frontend: http://localhost:8000
+   - Frontend (served by backend): http://localhost:8000
    - Backend API: http://localhost:8000/api
-   - Database: localhost:5432
+   - API Docs (Swagger): http://localhost:8000/docs
+   - Database (host port): localhost:5433
 
 ### What Docker Compose Sets Up
 
-- **PostgreSQL Database**: Persistent database with sample data
-- **Backend API**: FastAPI application with auto-reload
-- **Frontend**: React application with Vite build system
+- **PostgreSQL Database**: Persistent database (host port 5433 → container 5432)
+- **Backend API**: FastAPI application with auto-reload and SPA static serving
+- **Frontend**: React application built with Vite; build artifacts are served by the backend
 - **Data Persistence**: Database data persists between restarts
 
 ## Database Configuration
 
-The database is automatically configured with:
+The database is automatically configured with (see `docker-compose.yml`):
 - **Database Name**: `devsters_db`
 - **Username**: `devsters_user`
-- **Password**: `devsters_password`
-- **Port**: `5432`
+- **Password**: `sih2025devsters`
+- **Container Port**: `5432` (exposed on host as `5433`)
 
 ### Database Features
 
@@ -99,22 +100,24 @@ docker exec -it devsters-db psql -U devsters_user -d devsters_db
 
 # Or using any PostgreSQL client
 # Host: localhost
-# Port: 5432
+# Port: 5433
 # Database: devsters_db
 # Username: devsters_user
-# Password: devsters_password
+# Password: sih2025devsters
 ```
 
 **Reset the database:**
 ```bash
 # Stop services
-docker-compose down
+docker compose down
 
 # Remove database volume (WARNING: This deletes all data)
+# Volume is named `postgres_data` (Docker may prefix it with the project name)
+# Check with: docker volume ls | find "postgres_data"
 docker volume rm devsters_sih25_postgres_data
 
 # Start services again
-docker-compose up --build
+docker compose up --build
 ```
 
 ## Environment Variables
@@ -128,7 +131,7 @@ For local development without Docker, export these variables in your shell befor
 If you prefer to run without Docker:
 
 1. **Install PostgreSQL** locally
-2. **Create database** and user as specified in `env.example`
+2. **Create database** and user matching the values above (`devsters_db` / `devsters_user` / password `sih2025devsters`)
 3. **Install Python dependencies:**
    ```bash
    pip install -r requirements.txt
@@ -142,18 +145,25 @@ If you prefer to run without Docker:
    ```bash
    uvicorn backend.main:app --reload
    ```
-6. **Run frontend:**
+6. **Run frontend (development):**
    ```bash
    cd frontend
    npm run dev
    ```
+   The production SPA build is generated with `npm run build` and, in Docker, is served by the backend from the `frontend/dist` directory.
+
+### Notes on Routing and Static Files
+
+- All API routes are namespaced under `/api` (see `backend/routers`).
+- The backend serves the built SPA and falls back to `index.html` for unknown routes, enabling client-side routing.
+- A login endpoint exists at `POST /loginit` expecting form fields `email` and `password`.
 
 ## Features
 
 - **Full-stack application** with FastAPI and React
 - **Persistent PostgreSQL database** with Docker
-- **CRUD operations** for items and users
-- **Modern UI** with Tailwind CSS
+- **CRUD operations** (see `backend/routers`)
+- **Modern UI** with Tailwind CSS and DaisyUI
 - **Development-friendly** with hot reload
 - **Production-ready** with Docker containers
 
