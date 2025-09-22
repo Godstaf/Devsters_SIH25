@@ -119,11 +119,9 @@ docker-compose up --build
 
 ## Environment Variables
 
-Copy `env.example` to `.env` and modify as needed:
+Environment variables are managed by Docker Compose. Update the `environment` section in `docker-compose.yml` to change values such as `DB_HOST`, `DB_PORT`, `DB_USER`, `DB_PASSWORD`, and `DB_NAME`.
 
-```bash
-cp env.example .env
-```
+For local development without Docker, export these variables in your shell before running the backend.
 
 ## Manual Setup (Without Docker)
 

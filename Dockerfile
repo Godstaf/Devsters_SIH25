@@ -18,7 +18,10 @@ WORKDIR /app
 # ===== Dependencies layer =====
 FROM base AS deps
 COPY requirements.txt ./
-RUN pip install --no-cache-dir -r requirements.txt
+ENV PIP_DISABLE_PIP_VERSION_CHECK=1 \
+    PIP_DEFAULT_TIMEOUT=120
+RUN pip install --no-cache-dir --upgrade pip setuptools wheel \
+    && pip install --no-cache-dir -r requirements.txt
 
 # ===== Frontend build (Vite React) =====
 FROM node:20-slim AS frontend
