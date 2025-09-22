@@ -1,6 +1,6 @@
 import React from "react";
 import SideBar from "../layout_files/SideBar";
-import cpdsa from '../../assets/cpdsa.jpg'
+import cpdsa from "../../assets/cpdsa.jpg";
 import { FaCalendarAlt } from "react-icons/fa";
 import { FaBullhorn } from "react-icons/fa";
 import { PiStudentBold } from "react-icons/pi";
@@ -49,9 +49,7 @@ const activities = [
   },
 ];
 
-
 const Dashboard = () => {
-  
   const statusClasses = {
     Completed: "bg-green-100 text-green-600 px-3 py-1 rounded-full text-sm",
     Upcoming: "bg-yellow-100 text-yellow-600 px-3 py-1 rounded-full text-sm",
@@ -254,7 +252,7 @@ const Dashboard = () => {
               to="/campus-map"
               className="flex items-center gap-3 rounded-lg px-3 py-2 hover:bg-gray-50 transition"
             >
-              <FaMapMarkedAlt className="text-gray-600" size={25}/>
+              <FaMapMarkedAlt className="text-gray-600" size={25} />
               <span className="text-md text-gray-700">Campus Map</span>
             </Link>
           </div>
