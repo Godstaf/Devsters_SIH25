@@ -1,6 +1,6 @@
 import React from 'react'
 import SideBar from '../layout_files/SideBar'
-import Temp from './Temp'
+import Temp from './temp'
 
 const Portfolio = () => {
   return (

@@ -5,23 +5,73 @@ import cpdsa from '../../assets/cpdsa.jpg'
 import fbasic from '../../assets/fbasic.jpg'
 import reactbc from '../../assets/reactbc.png'
 import { FaArrowRight } from "react-icons/fa";
+import { FaUsers, FaPaintBrush, FaLaptopCode, FaVolleyballBall } from 'react-icons/fa';
+
 
 const Profile = () => {
+
+const clubs = [
+  {
+    name: "Tech Innovators",
+    icon: <FaUsers size={40} />,
+  },
+  {
+    name: "Artistic Expressions",
+    icon: <FaPaintBrush size={40} />,
+  },
+  {
+    name: "CodeCrafters",
+    icon: <FaLaptopCode size={40} />,
+  },
+  {
+    name: "Sports Enthusiasts",
+    icon: <FaVolleyballBall size={40} />,
+  },
+];
+
+const competitions = [
+  {
+    title: "International AI Challenge 2025",
+    Date: "March 15, 2025",
+    Organizer: "OpenAI Global",
+    KeyLearnings: "Advanced ML techniques, real-world dataset handling.",
+    imageSrc: "https://th.bing.com/th/id/OIP.qor3LHP0xKqdd3-KkUiEFwHaE4?w=263&h=180&c=7&r=0&o=7&dpr=1.4&pid=1.7&rm=3",
+  },
+  {
+    title: "Global Hackathon Series - Europe Edition",
+    Date: "June 3, 2025",
+    Organizer: "HackEurope",
+    KeyLearnings: "Team collaboration, rapid prototyping, pitching skills.",
+    imageSrc: "https://th.bing.com/th/id/OIP.p0f7sil8fWd7kkmj3AzIPQHaFj?w=242&h=182&c=7&r=0&o=7&dpr=1.4&pid=1.7&rm=3",
+  },
+  {
+    title: "National Robotics Championship",
+    Date: "August 22, 2025",
+    Organizer: "RoboLeague",
+    KeyLearnings: "Autonomous systems, hardware-software integration.",
+    imageSrc: "https://th.bing.com/th/id/OIP.Ri_AwIr3aENKYI1FpxT--AHaEK?w=306&h=180&c=7&r=0&o=7&dpr=1.4&pid=1.7&rm=3",
+  },
+];
+
+
   const conferences = [
     {
       title: "Tech Innovation Summit",
+      imageSrc:"https://th.bing.com/th/id/OIP.qor3LHP0xKqdd3-KkUiEFwHaE4?w=263&h=180&c=7&r=0&o=7&dpr=1.4&pid=1.7&rm=3",
       Date: "2023-05-15",
       Location: "San Francisco",
       Role: "Address",
     },
     {
       title: "AI Research Conference",
+      imageSrc:"https://th.bing.com/th/id/OIP.qor3LHP0xKqdd3-KkUiEFwHaE4?w=263&h=180&c=7&r=0&o=7&dpr=1.4&pid=1.7&rm=3",
       Date: "2023-06-20",
       Location: "New York",
       Role: "Presenter",
     },
     {
       title: "Web Development Expo",
+      imageSrc:"https://th.bing.com/th/id/OIP.qor3LHP0xKqdd3-KkUiEFwHaE4?w=263&h=180&c=7&r=0&o=7&dpr=1.4&pid=1.7&rm=3",
       Date: "2023-07-10",
       Location: "London",
       Role: "Attendee",
@@ -79,6 +129,53 @@ const Profile = () => {
     },
   ];
 
+  const contests = [
+    {
+      title: "National Mathematics Olympiad",
+      date: "2024-11-15",
+      location: "New Delhi, India",
+      role: "Participant",
+    },
+    {
+      title: "Inter-School Science Quiz",
+      date: "2023-08-05",
+      location: "Pune, Maharashtra",
+      role: "Team Leader",
+    },
+    {
+      title: "Regional Coding Challenge",
+      date: "2025-03-10",
+      location: "Mumbai, India",
+      role: "Organizer",
+    },
+  ];
+
+  const volunteerOpportunities = [
+    {
+      title: "WordCamp Pune 2025",
+      imageSrc: fbasic,
+      Date: "2025-11-15",
+      Organizer: "WordCamp Pune",
+      KeyLearnings:
+        "Collaborate with WordPress enthusiasts, assist in event coordination, and gain insights into community-driven tech events.",
+    },
+    {
+      title: "Rebearth 2025 - Punaravartan",
+      imageSrc: cpdsa,
+      Date: "2025-04-22",
+      Organizer: "eCoexist Foundation",
+      KeyLearnings:
+        "Participate in eco-friendly initiatives, promote sustainable practices, and contribute to environmental conservation efforts.",
+    },
+    {
+      title: "Composting & Organic Gardening Workshop",
+      imageSrc: reactbc,
+      Date: "2025-03-20",
+      Organizer: "Earth5R",
+      KeyLearnings:
+        "Learn sustainable gardening techniques, engage in community-driven environmental education, and green practices.",
+    },
+  ];
 
 
   return (
@@ -88,7 +185,7 @@ const Profile = () => {
       </div>
       <div className="min-h-screen flex flex-col md:ml-65 mt-18 p-8">
         <div className="w-full items-center">
-          <h1 className="text-slate-900 text-4xl font-bold">My Profile</h1>
+          <h1 className="text-slate-900 text-4xl font-bold">My Activities</h1>
         </div>
 
         {/* conferences */}
@@ -103,7 +200,7 @@ const Profile = () => {
                 </div>
                 <div className="text-black bg-white p-2 shadow-lg rounded-lg flex-1">
                   <h1 className="text-[16px] font-semibold">{con.title}</h1>
-                  <p className="mt-1 text-[#5344b3]">
+                  <div className="mt-1 text-[#5344b3]">
                     <div className="flex flex-col sm:gap-1 sm:flex-row">
                       <div>
                         <span>Date: {con.Date}</span>
@@ -115,7 +212,7 @@ const Profile = () => {
                         <span>| Role: {con.Role}</span>
                       </div>
                     </div>
-                  </p>
+                  </div>
                 </div>
               </div>
             ))}
@@ -216,46 +313,23 @@ const Profile = () => {
 
         {/* Clubs */}
         <div className="mt-8">
-          <h1 className="font-bold text-xl">Clubs</h1>
-
-          <div className="mt-6 overflow-x-auto">
-            <div className="flex gap-6 w-max items-center">
-              {workshops.map((wshop, index) => (
-                <div
-                  key={index}
-                  className="min-w-[280px] bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300"
-                >
-                  {/* Image */}
-                  <img
-                    src={wshop.imageSrc}
-                    alt={wshop.title}
-                    className="w-full h-40 object-cover"
-                  />
-
-                  {/* Content */}
-                  <div className="p-4">
-                    <h2 className="text-lg font-semibold text-gray-900 mb-2">
-                      {wshop.title}
-                    </h2>
-                    <p className="text-sm text-[#5344b3] mb-1">
-                      📅 Date: <span className="font-medium">{wshop.Date}</span>
-                    </p>
-                    <p className="text-sm text-[#5344b3] mb-1">
-                      👤 Organizer:{" "}
-                      <span className="font-medium">{wshop.Organizer}</span>
-                    </p>
-                    <p className="text-sm text-[#5344b3] mt-2">
-                      <span className="font-semibold text-black">
-                        Key Learnings:
-                      </span>{" "}
-                      {wshop.KeyLearnings}
-                    </p>
-                  </div>
+          <h2 className="text-2xl font-bold">Clubs & Societies</h2>
+          <div className="mt-6 flex justify-between items-center gap-6 overflow-x-auto">
+            {clubs.map((club, index) => (
+              <div
+                key={index}
+                className="rounded-lg overflow-hidden flex flex-col min-w-40 items-center gap-2"
+              >
+                <div className="mt-2 text-gray-900 bg-white flex justify-center items-center p-4 rounded-full shadow-lg">
+                  {club.icon}
                 </div>
-              ))}
-              <div className="h-20 w-20 justify-center flex items-center bg-slate-200 rounded-full">
-                <FaArrowRight size={40} />
+                <h3 className="text-xl font-semibold max-w-40 h-15 text-center">
+                  {club.name}
+                </h3>
               </div>
+            ))}
+            <div className="h-20 w-20 shrink-0 justify-center flex items-center bg-slate-200 rounded-full">
+              <FaArrowRight size={40} />
             </div>
           </div>
         </div>
@@ -266,36 +340,23 @@ const Profile = () => {
 
           <div className="mt-6 overflow-x-auto">
             <div className="flex gap-6 w-max items-center">
-              {workshops.map((wshop, index) => (
-                <div
-                  key={index}
-                  className="min-w-[280px] bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300"
-                >
-                  {/* Image */}
-                  <img
-                    src={wshop.imageSrc}
-                    alt={wshop.title}
-                    className="w-full h-40 object-cover"
-                  />
-
-                  {/* Content */}
-                  <div className="p-4">
-                    <h2 className="text-lg font-semibold text-gray-900 mb-2">
-                      {wshop.title}
-                    </h2>
-                    <p className="text-sm text-[#5344b3] mb-1">
-                      📅 Date: <span className="font-medium">{wshop.Date}</span>
-                    </p>
-                    <p className="text-sm text-[#5344b3] mb-1">
-                      👤 Organizer:{" "}
-                      <span className="font-medium">{wshop.Organizer}</span>
-                    </p>
-                    <p className="text-sm text-[#5344b3] mt-2">
-                      <span className="font-semibold text-black">
-                        Key Learnings:
-                      </span>{" "}
-                      {wshop.KeyLearnings}
-                    </p>
+              {volunteerOpportunities.map((vol, index) => (
+                <div className="card w-96 bg-white card-md shadow-lg overflow-y-auto h-60" key={index}>
+                  <div className="card-body">
+                    <h2 className="card-title">{vol.title}</h2>
+                   <p className="text-sm text-gray-500 mb-1">
+                     📅 Date: <span className="font-medium">{vol.Date}</span>
+                   </p>
+                   <p className="text-sm text-[#5344b3] mb-1">
+                     👤 Organizer:{" "}
+                     <span className="font-medium">{vol.Organizer}</span>
+                   </p>
+                   <p className="text-sm text-[#5344b3]">
+                     <span className="font-semibold text-black">
+                       Key Learnings:
+                     </span>{" "}
+                     {vol.KeyLearnings}
+                   </p>
                   </div>
                 </div>
               ))}
@@ -312,7 +373,7 @@ const Profile = () => {
 
           <div className="mt-6 overflow-x-auto">
             <div className="flex gap-6 w-max items-center">
-              {workshops.map((wshop, index) => (
+              {competitions.map((wshop, index) => (
                 <div
                   key={index}
                   className="min-w-[280px] bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300"
@@ -357,7 +418,7 @@ const Profile = () => {
           <h1 className="font-bold text-xl">Academic Contests</h1>
 
           <div className="mt-6 flex flex-col relative gap-3">
-            {conferences.map((con, index) => (
+            {contests.map((con, index) => (
               <div key={index} className="flex gap-3 items-center">
                 <div className="flex items-center justify-center w-10 h-10 bg-[#6f29d9]/20 rounded-full text-[#6f29d9]">
                   <FaRegCalendarAlt size={20} />
@@ -365,8 +426,8 @@ const Profile = () => {
                 <div className="text-black bg-white p-2 shadow-lg rounded-lg flex-1">
                   <h1 className="text-[16px] font-semibold">{con.title}</h1>
                   <p className="mt-1 text-[#5344b3]">
-                    Date: {con.Date} | Location: {con.Location} | Role:{" "}
-                    {con.Role}
+                    Date: {con.date} | Location: {con.location} | Role:{" "}
+                    {con.role}
                   </p>
                 </div>
               </div>

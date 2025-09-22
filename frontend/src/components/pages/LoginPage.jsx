@@ -1,18 +1,18 @@
-import React, { useState } from 'react'
-import { useForm } from 'react-hook-form';
-import { useSelector } from 'react-redux';
+import React, { useState } from "react";
+import { useForm } from "react-hook-form";
+import { useSelector } from "react-redux";
 import { MdVisibility, MdVisibilityOff } from "react-icons/md";
 
 const LoginPage = () => {
   const { register, handleSubmit } = useForm();
   const onSubmit = (data) => console.log(data);
-  const theme = useSelector((state)=> state.theme.theme);
-  const [visibility, setVisibility] = useState('false')
+  const theme = useSelector((state) => state.theme.theme);
+  const [visibility, setVisibility] = useState("false");
 
   return (
     <div
       className={`${
-        theme === "dark" ? "bg-black text-white" : "bg-white text-black"
+        theme === "dark" ? "bg-black text-white" : "bg-[#F4F2FF] text-black"
       }`}
     >
       {/* bg-[#1a1a1a] */}
@@ -25,7 +25,9 @@ const LoginPage = () => {
                   <h1
                     className="text-3xl sm:text-4xl font-bold tracking-tight"
                     style={
-                      theme === "dark" ? { color: "white" } : { color: "black" }
+                      theme === "dark"
+                        ? { color: "#F4F2FF" }
+                        : { color: "black" }
                     }
                   >
                     Welcome Back
@@ -48,9 +50,9 @@ const LoginPage = () => {
                         autoComplete="email"
                         className={`${
                           theme === "dark"
-                            ? "text-white placeholder-gray-400"
-                            : "text-black placeholder-gray-600"
-                        } relative block w-full appearance-none rounded-lg border border-[#2c3e50] bg-[#2c3e50]/20 px-3 py-3  focus:z-10 focus:border-sky-500 focus:outline-none focus:ring-sky-500 sm:text-sm`}
+                            ? "text-white placeholder-gray-400 border-[#2c3e50] bg-[#2c3e50]/20"
+                            : "text-black placeholder-gray-600 border-[#E4E1FB] bg-white"
+                        } relative block w-full appearance-none rounded-lg border border-[#2c3e50] bg-[#2c3e50]/20 px-3 py-3  focus:z-10 focus:border-[#6C47FF] focus:outline-none focus:ring-[#6C47FF] sm:text-sm`}
                         id="email-address"
                         name="email"
                         placeholder="Email address"
@@ -70,9 +72,9 @@ const LoginPage = () => {
                         autoComplete="current-password"
                         className={`${
                           theme === "dark"
-                            ? "text-white placeholder-gray-400"
-                            : "text-black placeholder-gray-600"
-                        } relative block w-full appearance-none rounded-lg border border-[#2c3e50] bg-[#2c3e50]/20 px-3 py-3 focus:z-10 focus:border-sky-500 focus:outline-none focus:ring-sky-500 sm:text-sm`}
+                            ? "text-white placeholder-gray-400 border-[#2c3e50] bg-[#2c3e50]/20"
+                            : "text-black placeholder-gray-600 border-[#E4E1FB] bg-white"
+                        } relative block w-full appearance-none rounded-lg border border-[#2c3e50] bg-[#2c3e50]/20 px-3 py-3 focus:z-10 focus:border-[#6C47FF] focus:outline-none focus:ring-[#6C47FF] sm:text-sm`}
                         id="password"
                         name="password"
                         placeholder="Password"
@@ -91,7 +93,7 @@ const LoginPage = () => {
                   <div className="flex items-center justify-end">
                     <div className="text-sm">
                       <a
-                        className="font-medium text-sky-500 hover:text-sky-400"
+                        className="font-medium text-[#6C47FF] hover:text-[#6C47FF]/80"
                         href="#"
                       >
                         Forgot your password?
@@ -100,7 +102,7 @@ const LoginPage = () => {
                   </div>
                   <div>
                     <button
-                      className="group relative flex w-full justify-center rounded-full border border-transparent bg-sky-500 py-3 px-4 text-sm font-semibold text-[var(--background-color)] hover:bg-sky-400 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:ring-offset-2 focus:ring-offset-[var(--background-color)] transition-colors duration-300"
+                      className="group relative flex w-full justify-center rounded-full border border-transparent bg-[#6C47FF] py-3 px-4 text-sm font-semibold text-[var(--background-color)] hover:bg-[#6C47FF]/80 focus:outline-none focus:ring-2 focus:ring-[#6C47FF]/80 focus:ring-offset-2 focus:ring-offset-[var(--background-color)] transition-colors duration-300 cursor-pointer"
                       type="submit"
                     >
                       Log in
@@ -110,7 +112,7 @@ const LoginPage = () => {
                 <p className="mt-6 text-center text-sm text-gray-400">
                   Don't have an account?
                   <a
-                    className="font-medium text-sky-500 hover:text-sky-300"
+                    className="font-medium text-[#6C47FF] hover:text-[#6C47FF]/80"
                     href="#"
                   >
                     Sign up
@@ -131,6 +133,6 @@ const LoginPage = () => {
       </div>
     </div>
   );
-}
+};
 
-export default LoginPage
+export default LoginPage;
