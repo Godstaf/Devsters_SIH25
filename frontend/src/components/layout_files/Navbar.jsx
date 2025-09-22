@@ -25,14 +25,10 @@ const Navbar = () => {
         </div>
         <div className="flex items-center gap-6">
           <div>
-            {theme === "light" ? (
               <IoSunnyOutline
                 size={25}
                 onClick={() => dispatch(toggleTheme())}
               />
-            ) : (
-              <FaMoon size={24} onClick={() => dispatch(toggleTheme())} />
-            )}
           </div>
           <a
             className="text-gray-600 hover:text-[#137fec] hidden md:inline"

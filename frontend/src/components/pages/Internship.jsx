@@ -1,7 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import SideBar from "../layout_files/SideBar";
+import AddInternshipForm from "../forms/InternshipForm";
 
-function InternshipCard({ company, role, period, status }) {
+function InternshipCard({
+  company,
+  role,
+  period,
+  status,
+  description,
+  stipend,
+  onDetails,
+}) {
   return (
     <div className="bg-white shadow-sm rounded-xl border border-slate-200 p-4 flex flex-col gap-3">
       <div className="flex items-start justify-between gap-3">
@@ -27,7 +36,10 @@ function InternshipCard({ company, role, period, status }) {
         </span>
       </div>
       <div className="mt-2 flex gap-2">
-        <button className="inline-flex items-center justify-center px-3 py-2 rounded-md text-sm font-medium border border-slate-300 text-slate-700 hover:bg-slate-50 cursor-pointer">
+        <button
+          className="inline-flex items-center justify-center px-3 py-2 rounded-md text-sm font-medium border border-slate-300 text-slate-700 hover:bg-slate-50 cursor-pointer"
+          onClick={onDetails}
+        >
           Details
         </button>
         <button className="inline-flex items-center justify-center px-3 py-2 rounded-md text-sm font-medium bg-[#6C47FF] text-white hover:bg-[#6C47FF]/80 cursor-pointer">
@@ -38,45 +50,106 @@ function InternshipCard({ company, role, period, status }) {
   );
 }
 
+function InternshipDetailsModal({ internship, onClose }) {
+  if (!internship) return null;
+  return (
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/30 backdrop-blur-sm">
+      <div className="bg-white rounded-xl p-6 shadow-lg min-w-[300px] max-w-[90vw]">
+        <h3 className="text-lg font-semibold mb-2">{internship.company}</h3>
+        <p className="mb-1">
+          <strong>Role:</strong> {internship.role}
+        </p>
+        <p className="mb-1">
+          <strong>Period:</strong> {internship.period}
+        </p>
+        <p className="mb-1">
+          <strong>Status:</strong> {internship.status}
+        </p>
+        <p className="mb-1">
+          <strong>Description:</strong> {internship.description}
+        </p>
+        <p className="mb-1">
+          <strong>Stipend:</strong> {internship.stipend}
+        </p>
+        <button
+          className="mt-4 px-4 py-2 bg-[#6C47FF] text-white rounded hover:bg-[#6C47FF]/80"
+          onClick={onClose}
+        >
+          Close
+        </button>
+      </div>
+    </div>
+  );
+}
+
+function InternshipFormModal({ onAdd, onCancel, theme }) {
+  return (
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/30 backdrop-blur-sm">
+      <AddInternshipForm onAdd={onAdd} onCancel={onCancel} theme={theme} />
+    </div>
+  );
+}
+
 export default function InternshipSection() {
-  const internships = [
+  const [internships, setInternships] = useState([
     {
       company: "Tech Innovators Inc.",
       role: "Frontend Intern",
       period: "Jan 2023 - Jun 2023",
       status: "Completed",
+      description: "Worked on UI components and improved website performance.",
+      stipend: "₹15,000/month",
     },
     {
       company: "Global Solutions Corp.",
       role: "UI/UX Intern",
       period: "Aug 2023 - Nov 2023",
       status: "Completed",
+      description: "Designed user flows and wireframes for client projects.",
+      stipend: "₹12,000/month",
     },
     {
       company: "Creative Minds Agency",
       role: "Design Intern",
       period: "Dec 2023 - Feb 2024",
       status: "Completed",
+      description: "Assisted in branding and graphic design tasks.",
+      stipend: "₹10,000/month",
     },
     {
       company: "Financial Dynamics Ltd.",
       role: "Data Intern",
       period: "Mar 2024 - Jul 2024",
       status: "Completed",
+      description: "Analyzed financial data and created dashboards.",
+      stipend: "₹18,000/month",
     },
     {
       company: "Marketing Gurus",
       role: "Marketing Intern",
       period: "Aug 2024 - Oct 2024",
       status: "Ongoing",
+      description: "Managing social media campaigns and analytics.",
+      stipend: "₹14,000/month",
     },
     {
       company: "Innovate Tomorrow",
       role: "Software Intern",
       period: "Nov 2024 - Present",
       status: "Ongoing",
+      description: "Developing backend APIs and automation scripts.",
+      stipend: "₹20,000/month",
     },
-  ];
+  ]);
+  const [showForm, setShowForm] = useState(false);
+  const [detailsInternship, setDetailsInternship] = useState(null);
+
+  const theme = "light";
+
+  function handleAddInternship(newInternship) {
+    setInternships([...internships, newInternship]);
+    setShowForm(false);
+  }
 
   return (
     <section className="bg-[#f4f2ff] flex mt-18 font-sans relative">
@@ -93,16 +166,36 @@ export default function InternshipSection() {
               Log and manage internships with statuses and dates.
             </p>
           </div>
-          <button className="inline-flex items-center justify-center px-3 py-2 rounded-md text-sm font-medium bg-[#6C47FF] text-white hover:bg-[#6C47FF]/80 whitespace-nowrap cursor-pointer">
+          <button
+            className="inline-flex items-center justify-center px-3 py-2 rounded-md text-sm font-medium bg-[#6C47FF] text-white hover:bg-[#6C47FF]/80 whitespace-nowrap cursor-pointer"
+            onClick={() => setShowForm(true)}
+          >
             Add Internship
           </button>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          {internships.map((it) => (
-            <InternshipCard key={`${it.company}-${it.period}`} {...it} />
+          {internships.map((it, idx) => (
+            <InternshipCard
+              key={`${it.company}-${it.period}-${idx}`}
+              {...it}
+              onDetails={() => setDetailsInternship(it)}
+            />
           ))}
         </div>
+
+        {showForm && (
+          <InternshipFormModal
+            onAdd={handleAddInternship}
+            onCancel={() => setShowForm(false)}
+            theme={theme}
+          />
+        )}
+
+        <InternshipDetailsModal
+          internship={detailsInternship}
+          onClose={() => setDetailsInternship(null)}
+        />
       </div>
     </section>
   );

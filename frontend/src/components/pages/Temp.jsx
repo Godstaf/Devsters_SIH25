@@ -222,6 +222,21 @@ const Temp = () => {
                             <FaFileUpload /> <span>Upload/Link</span>
                           </button>
                         </div>
+                        
+                        <div className="p-4 bg-[var(--background-color)] rounded-xl flex md:flex-row flex-col gap-5 justify-between items-center">
+                          <div>
+                            <h1 className="text-md font-semibold text-[var(--text-primary)]">
+                              Analyse Your Resume (AI)
+                            </h1>
+                            <p className="mt-2">
+                              Lorem ipsum dolor sit amet, consectetur
+                              adipisicing elit. Labore, aspernatur!
+                            </p>
+                          </div>
+                          <button className="bg-[var(--primary-color)] text-white flex items-center p-2 gap-2 rounded-lg">
+                            <FaFileUpload /> <span>Upload Resume</span>
+                          </button>
+                        </div>
                       </div>
 
                       <h1 className="text-lg mt-6 font-semibold text-[var(--text-primary)]">

@@ -62,16 +62,6 @@ const Engagements = () => {
         <SideBar />
       </div>
       <main className="min-h-screen flex flex-col md:ml-65 mt-24 sm:mt-18 p-8">
-        {clubFormH && (
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex justify-center items-center">
-            <ClubForm clubFormH={clubFormH} setClubFormH={setClubFormH} />
-          </div>
-        )}
-        {vFormVisible && (
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex justify-center items-center">
-            <VolunteerForm vFormVisible={vFormVisible} setVFormVisible={setVFormVisible} />
-          </div>
-        )}
         <h1 className="text-3xl font-bold mb-8">Clubs & Volunteer</h1>
         {/* Clubs Section */}
         <h2 className="text-2xl font-bold mb-4">Clubs</h2>
@@ -89,6 +79,11 @@ const Engagements = () => {
             </div>
           ))}
         </div>
+        {clubFormH && (
+          <div className="w-full mt-4 mb-4">
+            <ClubForm clubFormH={clubFormH} setClubFormH={setClubFormH} />
+          </div>
+        )}
         <div className="mb-4">
           <button
             className="bg-purple-500 text-white font-semibold p-2 rounded-lg"
@@ -122,9 +117,18 @@ const Engagements = () => {
             </div>
           ))}
         </div>
+        {vFormVisible && (
+          <div className="w-full mt-4">
+            <VolunteerForm
+              vFormVisible={vFormVisible}
+              setVFormVisible={setVFormVisible}
+            />
+          </div>
+        )}
         <div className="mt-6">
-          <button className="bg-purple-500 text-white font-semibold p-2 rounded-lg"
-          onClick={()=>setVFormVisible(prev => !prev)}
+          <button
+            className="bg-purple-500 text-white font-semibold p-2 rounded-lg"
+            onClick={() => setVFormVisible((prev) => !prev)}
           >
             + Volunteer
           </button>

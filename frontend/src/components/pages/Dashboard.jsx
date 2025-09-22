@@ -1,6 +1,6 @@
 import React from "react";
 import SideBar from "../layout_files/SideBar";
-import cpdsa from '../../assets/cpdsa.jpg'
+import cpdsa from "../../assets/cpdsa.jpg";
 import { FaCalendarAlt } from "react-icons/fa";
 import { FaBullhorn } from "react-icons/fa";
 import { PiStudentBold } from "react-icons/pi";
@@ -48,9 +48,7 @@ const activities = [
   },
 ];
 
-
 const Dashboard = () => {
-  
   const statusClasses = {
     Completed: "bg-green-100 text-green-600 px-3 py-1 rounded-full text-sm",
     Upcoming: "bg-yellow-100 text-yellow-600 px-3 py-1 rounded-full text-sm",
@@ -74,7 +72,7 @@ const Dashboard = () => {
           <div className="flex flex-col md:flex-row gap-3 mt-4 w-full">
             <div className="bg-white p-4 rounded-lg flex-1">
               <h1 className="text-lg text-slate-600">CGPA</h1>
-              <p className="text-3xl font-semibold">9.5</p>
+              <p className="text-3xl font-semibold">8.4</p>
             </div>
             <div className="bg-white p-4 rounded-lg flex-1">
               <h1 className="text-lg text-slate-600">Attendence</h1>
@@ -224,37 +222,37 @@ const Dashboard = () => {
           <h2 className="text-lg font-semibold text-gray-800 mb-4">
             Quick Links
           </h2>
-          <div className="space-y-3">
+          <div className="flex flex-col sm:flex-row sm:justify-between">
             <a
               href="/course-catalog"
               className="flex items-center gap-3 rounded-lg px-3 py-2 hover:bg-gray-50 transition"
             >
-              <FaBook className="text-gray-600" />
-              <span className="text-sm text-gray-700">Course Catalog</span>
+              <FaBook className="text-gray-600" size={25} />
+              <span className="text-md text-gray-700">Course Catalog</span>
             </a>
 
             <a
               href="/library"
               className="flex items-center gap-3 rounded-lg px-3 py-2 hover:bg-gray-50 transition"
             >
-              <FaUniversity className="text-gray-600" />
-              <span className="text-sm text-gray-700">Library Resources</span>
+              <FaUniversity className="text-gray-600" size={25} />
+              <span className="text-md text-gray-700">Library Resources</span>
             </a>
 
             <a
               href="/it-help"
               className="flex items-center gap-3 rounded-lg px-3 py-2 hover:bg-gray-50 transition"
             >
-              <FaHeadset className="text-gray-600" />
-              <span className="text-sm text-gray-700">IT Help Desk</span>
+              <FaHeadset className="text-gray-600" size={25} />
+              <span className="text-md text-gray-700">IT Help Desk</span>
             </a>
 
             <a
               href="/campus-map"
               className="flex items-center gap-3 rounded-lg px-3 py-2 hover:bg-gray-50 transition"
             >
-              <FaMapMarkedAlt className="text-gray-600" />
-              <span className="text-sm text-gray-700">Campus Map</span>
+              <FaMapMarkedAlt className="text-gray-600" size={25} />
+              <span className="text-md text-gray-700">Campus Map</span>
             </a>
           </div>
         </div>
