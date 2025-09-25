@@ -12,7 +12,7 @@ const SideBar = () => {
    const isActive = (path) => (window.location.pathname === path ? "bg-[#6C47FF] text-white" : "hover:bg-slate-300");
   return (
     <motion.div className="bg-slate-200 z-2 min-h-screen hidden md:flex md:w-65 p-4">
-      <div className="text-black w-full overflow-y-auto mb-40">
+      <div className="text-black w-full overflow-y-auto max-h-[calc(100vh-100px)]">
         <a className={`text-lg mb-3 flex gap-2 rounded-lg p-2 ${isActive('/dashboard')}`} href={'/dashboard'}>
           <CiGrid42 size={27} />
           Dashboard

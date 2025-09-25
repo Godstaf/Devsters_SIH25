@@ -18,7 +18,10 @@ const SideBar_sm = () => {
     return true;
   }
 
-  const isActive = (path) => (window.location.pathname === path ? "bg-[#6C47FF] text-white" : "hover:bg-slate-300");
+  const isActive = (path) =>
+    window.location.pathname === path
+      ? "bg-[#6C47FF] text-white"
+      : "hover:bg-slate-300";
 
   useEffect(() => {
     const handleResize = () => setIsSmallScreen(window.innerWidth < 768);
@@ -35,7 +38,7 @@ const SideBar_sm = () => {
           <AnimatePresence>
             {!hidden && (
               <motion.div
-                className="fixed top-0 left-0 bg-slate-200 w-[250px] z-50 min-h-screen flex-col flex p-4"
+                className="fixed top-0 left-0 bg-slate-200 w-[250px] z-[200] min-h-screen flex-col flex p-4"
                 initial={{
                   scale: 1,
                   x: "-250px",
@@ -57,52 +60,112 @@ const SideBar_sm = () => {
                     <MdCancel size={25} />
                   </button>
                 </div>
-                <div className="text-black">
-                  <a className={`text-lg mb-3 flex gap-2 rounded-lg p-2 ${isActive("/dashboard")}`} href="/dashboard">
+                <div className="text-black flex-1 max-h-[calc(100vh-100px)] overflow-y-auto">
+                  <a
+                    className={`text-lg mb-3 flex gap-2 rounded-lg p-2 ${isActive(
+                      "/dashboard"
+                    )}`}
+                    href="/dashboard"
+                  >
                     <CiGrid42 size={27} />
                     Dashboard
                   </a>
-                  <a className={`text-lg mb-3 flex gap-2 rounded-lg p-2 ${isActive("/profile")}`} href="/profile">
+                  <a
+                    className={`text-lg mb-3 flex gap-2 rounded-lg p-2 ${isActive(
+                      "/profile"
+                    )}`}
+                    href="/profile"
+                  >
                     <CgProfile size={27} />
                     Profile
                   </a>
-                  <a className={`text-lg mb-3 flex gap-2 rounded-lg p-2 ${isActive("/portfolio")}`} href="/portfolio">
+                  <a
+                    className={`text-lg mb-3 flex gap-2 rounded-lg p-2 ${isActive(
+                      "/portfolio"
+                    )}`}
+                    href="/portfolio"
+                  >
                     <FiBriefcase size={27} />
                     Portfolio
                   </a>
-                  <a className={`text-lg mb-3 flex gap-2 rounded-lg p-2 ${isActive("/internships")}`} href="/internships">
+                  <a
+                    className={`text-lg mb-3 flex gap-2 rounded-lg p-2 ${isActive(
+                      "/internships"
+                    )}`}
+                    href="/internships"
+                  >
                     <FaUserGraduate size={27} />
                     Internships
                   </a>
-                  <a className={`text-lg mb-3 flex gap-2 rounded-lg p-2 ${isActive("/approvals")}`} href="/approvals">
+                  <a
+                    className={`text-lg mb-3 flex gap-2 rounded-lg p-2 ${isActive(
+                      "/approvals"
+                    )}`}
+                    href="/approvals"
+                  >
                     <FaRegFileAlt size={27} />
                     Approvals
                   </a>
-                  <a className={`text-lg mb-3 flex gap-2 rounded-lg p-2 ${isActive("/analytics")}`} href="/analytics">
+                  <a
+                    className={`text-lg mb-3 flex gap-2 rounded-lg p-2 ${isActive(
+                      "/analytics"
+                    )}`}
+                    href="/analytics"
+                  >
                     <CiGrid42 size={27} />
                     Analytics
                   </a>
-                  <a className={`text-lg mb-3 flex gap-2 rounded-lg p-2 ${isActive("/contest")}`} href="/contest">
+                  <a
+                    className={`text-lg mb-3 flex gap-2 rounded-lg p-2 ${isActive(
+                      "/contest"
+                    )}`}
+                    href="/contest"
+                  >
                     <CiGrid42 size={27} />
                     Contest
                   </a>
-                  <a className={`text-lg mb-3 flex gap-2 rounded-lg p-2 ${isActive("/Activity-tracker")}`} href="/Activity-tracker">
+                  <a
+                    className={`text-lg mb-3 flex gap-2 rounded-lg p-2 ${isActive(
+                      "/Activity-tracker"
+                    )}`}
+                    href="/Activity-tracker"
+                  >
                     <CiGrid42 size={27} />
                     Activity Tracker
                   </a>
-                  <a className={`text-lg mb-3 flex gap-2 rounded-lg p-2 ${isActive("/Integration-support")}`} href="/Integration-support">
+                  <a
+                    className={`text-lg mb-3 flex gap-2 rounded-lg p-2 ${isActive(
+                      "/Integration-support"
+                    )}`}
+                    href="/Integration-support"
+                  >
                     <FaRegFileAlt size={27} />
                     Integration Support
                   </a>
-                  <a className={`text-lg mb-3 flex gap-2 rounded-lg p-2 ${isActive("/LeadershipRoles")}`} href="/LeadershipRoles">
+                  <a
+                    className={`text-lg mb-3 flex gap-2 rounded-lg p-2 ${isActive(
+                      "/LeadershipRoles"
+                    )}`}
+                    href="/LeadershipRoles"
+                  >
                     <FaRegFileAlt size={27} />
                     Leadership Roles
                   </a>
-                  <a className={`text-lg mb-3 flex gap-2 rounded-lg p-2 ${isActive("/faculty-dashboard")}`} href="/faculty-dashboard">
+                  <a
+                    className={`text-lg mb-3 flex gap-2 rounded-lg p-2 ${isActive(
+                      "/faculty-dashboard"
+                    )}`}
+                    href="/faculty-dashboard"
+                  >
                     <CiGrid42 size={27} />
                     Faculty Dashboard
                   </a>
-                  <a className={`text-lg mb-3 flex gap-2 rounded-lg p-2 ${isActive("/faculty-approvals")}`} href="/faculty-approvals">
+                  <a
+                    className={`text-lg mb-3 flex gap-2 rounded-lg p-2 ${isActive(
+                      "/faculty-approvals"
+                    )}`}
+                    href="/faculty-approvals"
+                  >
                     <FaRegFileAlt size={27} />
                     Faculty Approvals
                   </a>
@@ -112,7 +175,9 @@ const SideBar_sm = () => {
                         <FaRegFileAlt size={27} />
                         Expandable
                         <button
-                          className={`flex justify-center items-center ${expand ? "rotate-180" : ""}`}
+                          className={`flex justify-center items-center ${
+                            expand ? "rotate-180" : ""
+                          }`}
                           onClick={() => setExpand((prev) => !prev)}
                         >
                           <HiChevronDown size={27} />
@@ -120,11 +185,31 @@ const SideBar_sm = () => {
                       </div>
                       {expand && (
                         <div className="flex flex-col mt-4 ml-8">
-                          <a className="text-lg mb-2 flex gap-2 hover:bg-slate-400 rounded-lg p-2" href="/workshops">
+                          <a
+                            className="text-lg mb-2 flex gap-2 hover:bg-slate-400 rounded-lg p-2"
+                            href="/workshops"
+                          >
                             <CiGrid42 size={27} />
                             Conferences & Workshops
                           </a>
-                          <a className="text-lg mb-2 flex gap-2 hover:bg-slate-400 rounded-lg p-2" href="/engagements">
+                          <a
+                            className="text-lg mb-2 flex gap-2 hover:bg-slate-400 rounded-lg p-2"
+                            href="/engagements"
+                          >
+                            <CgProfile size={27} />
+                            Engagements
+                          </a>
+                          <a
+                            className="text-lg mb-2 flex gap-2 hover:bg-slate-400 rounded-lg p-2"
+                            href="/engagements"
+                          >
+                            <CgProfile size={27} />
+                            Engagements
+                          </a>
+                          <a
+                            className="text-lg mb-2 flex gap-2 hover:bg-slate-400 rounded-lg p-2"
+                            href="/engagements"
+                          >
                             <CgProfile size={27} />
                             Engagements
                           </a>
