@@ -11,9 +11,17 @@ import Approval from './components/pages/Approval'
 import InternshipSection from './components/pages/Internship'
 import WorkCon from './components/pages/WorkCon'
 import Engagements from './components/pages/Engagements'
+import FacultyApprovals from './components/pages/FacultyApprovals'
+import ActivityTracker from './components/pages/ActivityTracker'
+import Contest from './components/pages/Contest'
+import Analytics from './components/pages/Analytics'
+import IntegrationSupport from './components/pages/IntegrationSupport'
+import LeadershipRoles from './components/pages/LeadershipRoles'
+import FacultyDashboard from './components/pages/FacultyDashboard'
 
 function resolvePageComponent(pathname) {
-  switch (pathname) {
+  const path = (pathname || '').toLowerCase()
+  switch (path) {
     case '/':
     case '/home':
     case '':
@@ -36,6 +44,22 @@ function resolvePageComponent(pathname) {
       return <WorkCon />
     case '/engagements':
       return <Engagements />
+    case '/faculty-approvals':
+      return <FacultyApprovals />
+    case '/integration-support':
+      return <IntegrationSupport />
+    case '/activity-tracker':
+      return <ActivityTracker />
+    case '/contest':
+      return <Contest />
+    case '/analytics':
+      return <Analytics />
+    case '/leadershiproles':
+      return <LeadershipRoles />
+    case '/faculty':
+      return <FacultyDashboard />
+    case '/faculty-dashboard':
+      return <FacultyDashboard />
     default:
       return <HomePage />
   }

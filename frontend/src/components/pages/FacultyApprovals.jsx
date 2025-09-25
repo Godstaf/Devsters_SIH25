@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import SideBar from "../layout_files/SideBar";
-import teach from "../../assets/teach.png";
+import teach from "../../assets/reactbc.png";
 
 const initialApplications = [
   // Pending (4)

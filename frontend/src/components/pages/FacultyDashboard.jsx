@@ -1,6 +1,6 @@
 import React from "react";
 import SideBar from "../layout_files/SideBar";
-import teach from "../../assets/teach.png";
+import teach from "../../assets/reactbc.png";
 
 // Chart.js imports
 import {

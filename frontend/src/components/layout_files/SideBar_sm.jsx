@@ -15,17 +15,7 @@ const SideBar_sm = () => {
   const [expand, setExpand] = useState(false);
 
   function btnRouter() {
-    const pathname = window.location.pathname;
-    if (
-      pathname === "/home" ||
-      pathname === "/login" ||
-      pathname === "/sign-up" ||
-      pathname === "/"
-    ) {
-      return true;
-    }
-
-    return isSmallScreen;
+    return true;
   }
 
   const isActive = (path) => (window.location.pathname === path ? "bg-[#6C47FF] text-white" : "hover:bg-slate-300");
@@ -87,6 +77,34 @@ const SideBar_sm = () => {
                   <a className={`text-lg mb-3 flex gap-2 rounded-lg p-2 ${isActive("/approvals")}`} href="/approvals">
                     <FaRegFileAlt size={27} />
                     Approvals
+                  </a>
+                  <a className={`text-lg mb-3 flex gap-2 rounded-lg p-2 ${isActive("/analytics")}`} href="/analytics">
+                    <CiGrid42 size={27} />
+                    Analytics
+                  </a>
+                  <a className={`text-lg mb-3 flex gap-2 rounded-lg p-2 ${isActive("/contest")}`} href="/contest">
+                    <CiGrid42 size={27} />
+                    Contest
+                  </a>
+                  <a className={`text-lg mb-3 flex gap-2 rounded-lg p-2 ${isActive("/Activity-tracker")}`} href="/Activity-tracker">
+                    <CiGrid42 size={27} />
+                    Activity Tracker
+                  </a>
+                  <a className={`text-lg mb-3 flex gap-2 rounded-lg p-2 ${isActive("/Integration-support")}`} href="/Integration-support">
+                    <FaRegFileAlt size={27} />
+                    Integration Support
+                  </a>
+                  <a className={`text-lg mb-3 flex gap-2 rounded-lg p-2 ${isActive("/LeadershipRoles")}`} href="/LeadershipRoles">
+                    <FaRegFileAlt size={27} />
+                    Leadership Roles
+                  </a>
+                  <a className={`text-lg mb-3 flex gap-2 rounded-lg p-2 ${isActive("/faculty-dashboard")}`} href="/faculty-dashboard">
+                    <CiGrid42 size={27} />
+                    Faculty Dashboard
+                  </a>
+                  <a className={`text-lg mb-3 flex gap-2 rounded-lg p-2 ${isActive("/faculty-approvals")}`} href="/faculty-approvals">
+                    <FaRegFileAlt size={27} />
+                    Faculty Approvals
                   </a>
                   <div className="text-lg mb-3 items-center flex-col gap-2 hover:bg-slate-300 rounded-lg p-2">
                     <div>
