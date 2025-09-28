@@ -171,14 +171,16 @@ const SideBar_sm = () => {
                   </a>
                   <div className="text-lg mb-3 items-center flex-col gap-2 hover:bg-slate-300 rounded-lg p-2">
                     <div>
-                      <div className="flex gap-2">
+                      <div
+                        className="flex gap-2"
+                        onClick={() => setExpand((prev) => !prev)}
+                      >
                         <FaRegFileAlt size={27} />
                         Expandable
                         <button
                           className={`flex justify-center items-center ${
                             expand ? "rotate-180" : ""
                           }`}
-                          onClick={() => setExpand((prev) => !prev)}
                         >
                           <HiChevronDown size={27} />
                         </button>
@@ -191,20 +193,6 @@ const SideBar_sm = () => {
                           >
                             <CiGrid42 size={27} />
                             Conferences & Workshops
-                          </a>
-                          <a
-                            className="text-lg mb-2 flex gap-2 hover:bg-slate-400 rounded-lg p-2"
-                            href="/engagements"
-                          >
-                            <CgProfile size={27} />
-                            Engagements
-                          </a>
-                          <a
-                            className="text-lg mb-2 flex gap-2 hover:bg-slate-400 rounded-lg p-2"
-                            href="/engagements"
-                          >
-                            <CgProfile size={27} />
-                            Engagements
                           </a>
                           <a
                             className="text-lg mb-2 flex gap-2 hover:bg-slate-400 rounded-lg p-2"

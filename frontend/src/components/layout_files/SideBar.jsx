@@ -13,73 +13,143 @@ const SideBar = () => {
   return (
     <motion.div className="bg-slate-200 z-2 min-h-screen hidden md:flex md:w-65 p-4">
       <div className="text-black w-full overflow-y-auto max-h-[calc(100vh-100px)]">
-        <a className={`text-lg mb-3 flex gap-2 rounded-lg p-2 ${isActive('/dashboard')}`} href={'/dashboard'}>
+        <a
+          className={`text-lg mb-3 flex gap-2 rounded-lg p-2 ${isActive(
+            "/dashboard"
+          )}`}
+          href={"/dashboard"}
+        >
           <CiGrid42 size={27} />
           Dashboard
         </a>
-        <a className={`text-lg mb-3 flex gap-2 rounded-lg p-2 ${isActive('/profile')}`} href={'/profile'}>
+        <a
+          className={`text-lg mb-3 flex gap-2 rounded-lg p-2 ${isActive(
+            "/profile"
+          )}`}
+          href={"/profile"}
+        >
           <CgProfile size={27} />
           Profile
         </a>
-        <a className={`text-lg mb-3 flex gap-2 rounded-lg p-2 ${isActive('/portfolio')}`} href={'/portfolio'}>
+        <a
+          className={`text-lg mb-3 flex gap-2 rounded-lg p-2 ${isActive(
+            "/portfolio"
+          )}`}
+          href={"/portfolio"}
+        >
           <FiBriefcase size={27} />
           Portfolio
         </a>
-        <a className={`text-lg mb-3 flex gap-2 rounded-lg p-2 ${isActive('/internships')}`} href={'/internships'}>
+        <a
+          className={`text-lg mb-3 flex gap-2 rounded-lg p-2 ${isActive(
+            "/internships"
+          )}`}
+          href={"/internships"}
+        >
           <FaUserGraduate size={27} />
           Internships
         </a>
-        <a className={`text-lg mb-3 flex gap-2 rounded-lg p-2 ${isActive('/approvals')}`} href={'/approvals'}>
+        <a
+          className={`text-lg mb-3 flex gap-2 rounded-lg p-2 ${isActive(
+            "/approvals"
+          )}`}
+          href={"/approvals"}
+        >
           <FaRegFileAlt size={27} />
           Approvals
         </a>
-        <a className={`text-lg mb-3 flex gap-2 rounded-lg p-2 ${isActive('/analytics')}`} href={'/analytics'}>
+        <a
+          className={`text-lg mb-3 flex gap-2 rounded-lg p-2 ${isActive(
+            "/analytics"
+          )}`}
+          href={"/analytics"}
+        >
           <CiGrid42 size={27} />
           Analytics
         </a>
-        <a className={`text-lg mb-3 flex gap-2 rounded-lg p-2 ${isActive('/contest')}`} href={'/contest'}>
+        <a
+          className={`text-lg mb-3 flex gap-2 rounded-lg p-2 ${isActive(
+            "/contest"
+          )}`}
+          href={"/contest"}
+        >
           <CiGrid42 size={27} />
           Contest
         </a>
-        <a className={`text-lg mb-3 flex gap-2 rounded-lg p-2 ${isActive('/Activity-tracker')}`} href={'/Activity-tracker'}>
+        <a
+          className={`text-lg mb-3 flex gap-2 rounded-lg p-2 ${isActive(
+            "/Activity-tracker"
+          )}`}
+          href={"/Activity-tracker"}
+        >
           <CiGrid42 size={27} />
           Activity Tracker
         </a>
-        <a className={`text-lg mb-3 flex gap-2 rounded-lg p-2 ${isActive('/Integration-support')}`} href={'/Integration-support'}>
+        <a
+          className={`text-lg mb-3 flex gap-2 rounded-lg p-2 ${isActive(
+            "/Integration-support"
+          )}`}
+          href={"/Integration-support"}
+        >
           <FaRegFileAlt size={27} />
           Integration Support
         </a>
-        <a className={`text-lg mb-3 flex gap-2 rounded-lg p-2 ${isActive('/LeadershipRoles')}`} href={'/LeadershipRoles'}>
+        <a
+          className={`text-lg mb-3 flex gap-2 rounded-lg p-2 ${isActive(
+            "/LeadershipRoles"
+          )}`}
+          href={"/LeadershipRoles"}
+        >
           <FaRegFileAlt size={27} />
           Leadership Roles
         </a>
-        <a className={`text-lg mb-3 flex gap-2 rounded-lg p-2 ${isActive('/faculty-dashboard')}`} href={'/faculty-dashboard'}>
+        <a
+          className={`text-lg mb-3 flex gap-2 rounded-lg p-2 ${isActive(
+            "/faculty-dashboard"
+          )}`}
+          href={"/faculty-dashboard"}
+        >
           <CiGrid42 size={27} />
           Faculty Dashboard
         </a>
-        <a className={`text-lg mb-3 flex gap-2 rounded-lg p-2 ${isActive('/faculty-approvals')}`} href={'/faculty-approvals'}>
+        <a
+          className={`text-lg mb-3 flex gap-2 rounded-lg p-2 ${isActive(
+            "/faculty-approvals"
+          )}`}
+          href={"/faculty-approvals"}
+        >
           <FaRegFileAlt size={27} />
           Faculty Approvals
         </a>
         <div className="text-lg mb-3 items-center flex-col gap-2 hover:bg-slate-300 rounded-lg p-2">
           <div>
-            <div className="flex gap-2">
+            <div
+              className="flex gap-2"
+              onClick={() => setExpand((prev) => !prev)}
+            >
               <FaRegFileAlt size={27} />
               ExtraCurriculur
               <button
-                className={`flex justify-center items-center ${expand ? "rotate-180" : ""}`}
-                onClick={() => setExpand((prev) => !prev)}
+                className={`flex justify-center items-center ${
+                  expand ? "rotate-180" : ""
+                }`}
               >
                 <HiChevronDown size={27} />
               </button>
             </div>
             {expand && (
               <div className="flex flex-col mt-4 ml-8">
-                <a className="text-lg mb-2 flex gap-2 hover:bg-slate-400 rounded-lg p-2" href={'/workshops'}>
+                <a
+                  className="text-lg mb-2 flex gap-2 hover:bg-slate-400 rounded-lg p-2"
+                  href={"/workshops"}
+                >
                   <CiGrid42 size={27} />
                   Conference & Workshops
                 </a>
-                <a className="text-lg mb-2 flex gap-2 hover:bg-slate-400 rounded-lg p-2" href={'/engagements'}>
+                <a
+                  className="text-lg mb-2 flex gap-2 hover:bg-slate-400 rounded-lg p-2"
+                  href={"/engagements"}
+                >
                   <CgProfile size={27} />
                   Engagement
                 </a>
