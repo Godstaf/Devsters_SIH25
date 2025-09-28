@@ -14,6 +14,11 @@ app.mount("/static", StaticFiles(directory="static"), name="static")
 # API routes are namespaced to avoid clashing with SPA routes
 app.include_router(items.router, prefix="/api")
 
+# Health check endpoint for deployment platforms
+@app.get("/api/health")
+async def health_check():
+    return {"status": "ok", "message": "API is running"}
+
 # Frontend (React) build output directory
 FRONTEND_DIR = Path("frontend").resolve()
 INDEX_HTML = FRONTEND_DIR / "index.html"
