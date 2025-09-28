@@ -46,6 +46,7 @@ COPY --from=deps /usr/local/bin /usr/local/bin
 COPY --chown=appuser:appuser backend ./backend
 COPY --chown=appuser:appuser static ./static
 COPY --chown=appuser:appuser README.md ./README.md
+COPY --chown=appuser:appuser start.sh ./start.sh
 
 # Copy frontend build artifacts to be served by FastAPI
 COPY --chown=appuser:appuser --from=frontend /frontend/dist ./frontend
