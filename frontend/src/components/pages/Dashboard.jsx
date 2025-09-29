@@ -126,9 +126,9 @@ const Dashboard = () => {
                 View and Share Your Portfolio
               </h1>
               <p className="mt-3 text-base leading-relaxed">
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                Tenetur animi repellat reprehenderit vero doloribus modi
-                reiciendis. Consectetur dolor temporibus aperiam?
+                Create a shareable portfolio highlighting your projects, skills,
+                and achievements. Export as PDF or share a public link in one
+                click.
               </p>
               <div className="flex gap-3 mt-3">
                 <button className="bg-sky-600 text-white p-2 rounded-lg">
@@ -145,6 +145,28 @@ const Dashboard = () => {
                 src={cpdsa}
                 alt="image for portfolio"
               />
+            </div>
+          </div>
+        </div>
+
+        {/* AI Profile analyser */}
+
+        <div className="mt-8">
+          <div className="w-full bg-white rounded-xl shadow-lg p-8 flex">
+            <div className="flex flex-col">
+              <h1 className="text-[20px] font-bold">AI Profile Analyser</h1>
+              <div className="flex md:gap-3 md:flex-row flex-col">
+                <p className="mt-3 text-base leading-relaxed">
+                  Get instant insights into your profile—strengths, skill gaps,
+                  and tailored suggestions. Receive recommendations for
+                  internships, projects, and courses to boost your readiness.
+                </p>
+                <div className="flex gap-3 mt-3 items-center">
+                  <button className="bg-sky-600 text-white p-2 rounded-lg">
+                    Analyse
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -194,8 +216,8 @@ const Dashboard = () => {
                   Library Hours Update
                 </h3>
                 <p className="text-xs text-gray-500">
-                  Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                  Tempore, rerum.
+                  The library will operate with extended evening hours this
+                  week. Check the portal for the detailed schedule.
                 </p>
               </div>
             </div>
@@ -210,8 +232,8 @@ const Dashboard = () => {
                   Scholarship Application deadline
                 </h3>
                 <p className="text-xs text-gray-500">
-                  Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                  Tempore, rerum.
+                  Submit your scholarship application before 5:00 PM on May 15.
+                  Late submissions will not be accepted.
                 </p>
               </div>
             </div>
