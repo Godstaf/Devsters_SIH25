@@ -29,7 +29,7 @@ const SideBar = () => {
           href={"/profile"}
         >
           <CgProfile size={27} />
-          Profile
+          Activities
         </a>
         <a
           className={`text-lg mb-3 flex gap-2 rounded-lg p-2 ${isActive(
