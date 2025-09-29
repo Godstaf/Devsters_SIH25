@@ -183,7 +183,7 @@ const FacultyApprovals = () => {
         <h1 className="text-4xl font-bold mb-2">Approval Applications</h1>
 
         {/* Tabs */}
-        <div className="flex gap-4 mb-4 w-full">
+        <div className="flex gap-4 mb-4 w-full overflow-x-auto">
           {tabs.map((tab) => (
             <button
               key={tab}

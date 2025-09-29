@@ -19,7 +19,7 @@ const Navbar = () => {
       <div className="w-full flex items-center justify-between px-3 md:px-6 py-4 relative">
         <div className="flex items-center gap-3">
           <SideBar_sm />
-          <a className="text-xl font-bold text-gray-900" href="/home">
+          <a className="text-2xl font-bold text-gray-900" href="/home">
             Profolio
           </a>
         </div>

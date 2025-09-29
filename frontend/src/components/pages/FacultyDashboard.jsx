@@ -85,7 +85,7 @@ const FacultyDashboard = () => {
         </div>
 
         {/* Stats Cards */}
-        <div className="w-full flex gap-4 mb-6">
+        <div className="w-full flex flex-col md:flex-row gap-4 mb-6">
           <div className="bg-white shadow-lg p-3 rounded-lg flex-1">
             <h2 className="text-gray-600">Students Monitored</h2>
             <p className="text-2xl font-semibold">250</p>
@@ -101,9 +101,9 @@ const FacultyDashboard = () => {
         </div>
 
         {/* Analytics Graphs */}
-        <div className="grid md:grid-cols-2 gap-6">
+        <div className="flex lg:flex-row flex-col gap-3">
           {/* Pie Chart */}
-          <div className="bg-white shadow-lg p-6 rounded-lg">
+          <div className="bg-white shadow-lg p-6 rounded-lg lg:flex-1">
             <h2 className="text-lg font-semibold mb-4">
               Student Distribution by Branch
             </h2>
@@ -111,7 +111,7 @@ const FacultyDashboard = () => {
           </div>
 
           {/* Bar Chart */}
-          <div className="bg-white shadow-lg p-6 rounded-lg">
+          <div className="bg-white shadow-lg p-6 rounded-lg lg:flex-1">
             <h2 className="text-lg font-semibold mb-4">
               Achievements Logged per Branch
             </h2>

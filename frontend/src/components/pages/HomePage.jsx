@@ -9,8 +9,10 @@ const HomePage = () => {
         <div className="container mx-auto grid gap-12 lg:grid-cols-2 px-6">
           <div>
             <h1 className="text-5xl font-bold">
-              Unlock Your Full Potential with
-              <span className="text-[#6C47FF]">Profolio</span>
+              Unlock Your Full Potential
+              <span className="text-[#6C47FF]">
+                <h1 className="text-5xl font-bold">with</h1> Profolio
+              </span>
             </h1>
             <p className="mt-6 text-lg text-gray-600">
               A centralized platform to manage your academic records, track
