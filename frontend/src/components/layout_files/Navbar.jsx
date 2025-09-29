@@ -20,7 +20,7 @@ const Navbar = () => {
         <div className="flex items-center gap-3">
           <SideBar_sm />
           <a className="text-xl font-bold text-gray-900" href="/home">
-            Smart Student Hub
+            Profolio
           </a>
         </div>
         <div className="flex items-center gap-6">

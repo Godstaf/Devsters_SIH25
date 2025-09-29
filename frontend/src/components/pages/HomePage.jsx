@@ -10,7 +10,7 @@ const HomePage = () => {
           <div>
             <h1 className="text-5xl font-bold">
               Unlock Your Full Potential with
-              <span className="text-[#6C47FF]">Smart Student Hub</span>
+              <span className="text-[#6C47FF]">Profolio</span>
             </h1>
             <p className="mt-6 text-lg text-gray-600">
               A centralized platform to manage your academic records, track
