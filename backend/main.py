@@ -45,7 +45,7 @@ async def loginit(email: str = Form(...), password: str = Form(...)):
         hashed_password = hashlib.sha256(password.encode()).hexdigest()
 
         # Table renamed to users (avoid reserved keyword "user")
-        query = 'SELECT name FROM users WHERE email = %s AND password = %s'
+        query = 'SELECT name FROM login_credentials WHERE email = %s AND password = %s'
         values = (email, hashed_password)
 
         with get_connection() as conn:
