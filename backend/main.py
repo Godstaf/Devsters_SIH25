@@ -67,6 +67,12 @@ async def loginit(email: str = Form(...), password: str = Form(...)):
     except Exception as e:
         return JSONResponse({"status": "error", "message": f"Database connection failed: {str(e)}"}, status_code=500)
 
+
+async def get_user_details(email: str):
+    pass
+
+
+
 # Serve SPA assets and files: return file if it exists, else fallback to index.html
 # IMPORTANT: This catch-all must be defined AFTER all API routes so it doesn't intercept them
 @app.get("/{full_path:path}")

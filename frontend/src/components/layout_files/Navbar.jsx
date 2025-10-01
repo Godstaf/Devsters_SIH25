@@ -30,33 +30,13 @@ const Navbar = () => {
                 onClick={() => dispatch(toggleTheme())}
               />
           </div>
-          <a
-            className="text-gray-600 hover:text-[#137fec] hidden md:inline"
-            href="#"
-          >
-            Features
-          </a>
 
-          <a
-            className="text-gray-600 hover:text-[#137fec] hidden sm:block"
-            href="/login"
-          >
-            Log In
-          </a>
-          <button
-            className="sm:hidden rounded border px-3 py-1 text-sm text-gray-700 hover:bg-gray-100 cursor-pointer"
-            onClick={() => setIsMobileMenuOpen((prev) => !prev)}
-            aria-expanded={isMobileMenuOpen}
-            aria-controls="mobile-nav-popover"
-            aria-haspopup="menu"
-          >
-            Menu
-          </button>
+        
           <a
             className="rounded-lg bg-[#6C47FF] px-4 py-2 text-white hover:bg-[#6C47FF]/80"
-            href="/sign-up"
+            href="/login"
           >
-            Sign Up
+            LogIn
           </a>
         </div>
         {isMobileMenuOpen && (
@@ -68,27 +48,11 @@ const Navbar = () => {
             <div className="flex flex-col p-2">
               <a
                 className="px-3 py-2 rounded hover:bg-gray-100 text-gray-700"
-                href="#"
-                role="menuitem"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                Features
-              </a>
-              <a
-                className="px-3 py-2 rounded hover:bg-gray-100 text-gray-700"
-                href="/login"
-                role="menuitem"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                Log In
-              </a>
-              <a
-                className="px-3 py-2 rounded hover:bg-gray-100 text-gray-700"
                 href="/sign-up"
                 role="menuitem"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
-                Sign Up
+                LogIn
               </a>
             </div>
           </div>

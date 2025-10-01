@@ -17,12 +17,12 @@ CREATE TABLE IF NOT EXISTS "login_credentials" (
 -- Creating table for storing student details
 CREATE TABLE IF NOT EXISTS "student_details" (
     name VARCHAR(200) NOT NULL,
-    student_id VARCHAR(200) PRIMARY KEY,
+    student_id bigint PRIMARY KEY,
     email VARCHAR(200) NOT NULL,
-    institution_id VARCHAR(200) NOT NULL,
+    institution_id bigint NOT NULL,
     branch VARCHAR(200) NOT NULL,
-    passing_year VARCHAR(200) NOT NULL,
-    semester VARCHAR(200) NOT NULL,
+    passing_year date NOT NULL,
+    semester bigint NOT NULL,
     status VARCHAR(200) NOT NULL,
     created_at TIMESTAMP NOT NULL,
     updated_at TIMESTAMP NOT NULL,
@@ -35,10 +35,10 @@ CREATE TABLE IF NOT EXISTS "student_details" (
 -- Creating table for storing faculty details
 CREATE TABLE IF NOT EXISTS "faculty_details" (
     name VARCHAR(200) NOT NULL,
-    faculty_id VARCHAR(200) PRIMARY KEY,
+    faculty_id bigint PRIMARY KEY,
     email VARCHAR(200) NOT NULL,
-    institution_id VARCHAR(200) NOT NULL,
-    designation_id VARCHAR(200) NOT NULL,
+    institution_id bigint NOT NULL,
+    designation_id bigint NOT NULL,
     created_at TIMESTAMP NOT NULL,
     updated_at TIMESTAMP NOT NULL,
     status VARCHAR(200) NOT NULL
@@ -49,7 +49,7 @@ CREATE TABLE IF NOT EXISTS "faculty_details" (
 -- Creating table for storing institution details
 CREATE TABLE IF NOT EXISTS "institution_details" (
     name VARCHAR(200) NOT NULL,
-    institution_id VARCHAR(200) PRIMARY KEY,
+    institution_id bigint PRIMARY KEY,
     institution_name VARCHAR(200) NOT NULL,
     institution_address VARCHAR(200) NOT NULL,
     institution_city VARCHAR(200) NOT NULL,
@@ -73,7 +73,7 @@ CREATE TABLE IF NOT EXISTS "institution_details" (
 
 -- Creating table for storing courses' details
 CREATE TABLE IF NOT EXISTS "course_details" (
-    course_id VARCHAR(200) PRIMARY KEY,
+    course_id bigint PRIMARY KEY,
     course_name VARCHAR(200) NOT NULL,
     course_description VARCHAR(200) NOT NULL,
     course_type VARCHAR(200) NOT NULL,
@@ -93,7 +93,7 @@ CREATE TABLE IF NOT EXISTS "course_details" (
 
 -- Creating table for storing designation details
 CREATE TABLE IF NOT EXISTS "designation_details" (
-    designation_id VARCHAR(200) PRIMARY KEY,
+    designation_id bigint PRIMARY KEY,
     designation_name VARCHAR(200) NOT NULL,
     designation_description VARCHAR(200) NOT NULL,
     designation_strength VARCHAR(200) NOT NULL,
