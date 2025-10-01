@@ -5,7 +5,15 @@ import { MdVisibility, MdVisibilityOff } from "react-icons/md";
 
 const LoginPage = () => {
   const { register, handleSubmit } = useForm();
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = async(data) => {
+    const form = new FormData();
+    form.append("email", data.email);
+    form.append("password", data.password);
+    await fetch("http://localhost:8000/loginit", {
+      method: "POST",
+      body: form,
+    });
+  };
   const theme = useSelector((state) => state.theme.theme);
   const [visibility, setVisibility] = useState("false");
 
