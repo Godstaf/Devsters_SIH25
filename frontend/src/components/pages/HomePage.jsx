@@ -9,9 +9,12 @@ const HomePage = () => {
         <div className="container mx-auto grid gap-12 lg:grid-cols-2 px-6">
           <div>
             <h1 className="text-5xl font-bold">
-              Unlock Your Full Potential with
-              <span className="text-[#6C47FF]">Smart Student Hub</span>
+              Unlock Your Full Potential{" "}
+              <span className="whitespace-nowrap">
+                with <span className="text-[#6C47FF]">Portfolio</span>
+              </span>
             </h1>
+
             <p className="mt-6 text-lg text-gray-600">
               A centralized platform to manage your academic records, track
               achievements, and build a stunning digital portfolio effortlessly.

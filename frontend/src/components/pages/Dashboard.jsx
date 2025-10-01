@@ -1,6 +1,6 @@
 import React from "react";
 import SideBar from "../layout_files/SideBar";
-import cpdsa from '../../assets/cpdsa.jpg'
+import cpdsa from "../../assets/cpdsa.jpg";
 import { FaCalendarAlt } from "react-icons/fa";
 import { FaBullhorn } from "react-icons/fa";
 import { PiStudentBold } from "react-icons/pi";
@@ -48,9 +48,7 @@ const activities = [
   },
 ];
 
-
 const Dashboard = () => {
-  
   const statusClasses = {
     Completed: "bg-green-100 text-green-600 px-3 py-1 rounded-full text-sm",
     Upcoming: "bg-yellow-100 text-yellow-600 px-3 py-1 rounded-full text-sm",
@@ -74,7 +72,7 @@ const Dashboard = () => {
           <div className="flex flex-col md:flex-row gap-3 mt-4 w-full">
             <div className="bg-white p-4 rounded-lg flex-1">
               <h1 className="text-lg text-slate-600">CGPA</h1>
-              <p className="text-3xl font-semibold">9.5</p>
+              <p className="text-3xl font-semibold">8.4</p>
             </div>
             <div className="bg-white p-4 rounded-lg flex-1">
               <h1 className="text-lg text-slate-600">Attendence</h1>
@@ -128,9 +126,9 @@ const Dashboard = () => {
                 View and Share Your Portfolio
               </h1>
               <p className="mt-3 text-base leading-relaxed">
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                Tenetur animi repellat reprehenderit vero doloribus modi
-                reiciendis. Consectetur dolor temporibus aperiam?
+                Create a shareable portfolio highlighting your projects, skills,
+                and achievements. Export as PDF or share a public link in one
+                click.
               </p>
               <div className="flex gap-3 mt-3">
                 <button className="bg-sky-600 text-white p-2 rounded-lg">
@@ -147,6 +145,28 @@ const Dashboard = () => {
                 src={cpdsa}
                 alt="image for portfolio"
               />
+            </div>
+          </div>
+        </div>
+
+        {/* AI Profile analyser */}
+
+        <div className="mt-8">
+          <div className="w-full bg-white rounded-xl shadow-lg p-8 flex">
+            <div className="flex flex-col">
+              <h1 className="text-[20px] font-bold">AI Profile Analyser</h1>
+              <div className="flex md:gap-3 md:flex-row flex-col">
+                <p className="mt-3 text-base leading-relaxed">
+                  Get instant insights into your profile—strengths, skill gaps,
+                  and tailored suggestions. Receive recommendations for
+                  internships, projects, and courses to boost your readiness.
+                </p>
+                <div className="flex gap-3 mt-3 items-center">
+                  <button className="bg-sky-600 text-white p-2 rounded-lg">
+                    Analyse
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -196,8 +216,8 @@ const Dashboard = () => {
                   Library Hours Update
                 </h3>
                 <p className="text-xs text-gray-500">
-                  Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                  Tempore, rerum.
+                  The library will operate with extended evening hours this
+                  week. Check the portal for the detailed schedule.
                 </p>
               </div>
             </div>
@@ -212,8 +232,8 @@ const Dashboard = () => {
                   Scholarship Application deadline
                 </h3>
                 <p className="text-xs text-gray-500">
-                  Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                  Tempore, rerum.
+                  Submit your scholarship application before 5:00 PM on May 15.
+                  Late submissions will not be accepted.
                 </p>
               </div>
             </div>
@@ -224,37 +244,37 @@ const Dashboard = () => {
           <h2 className="text-lg font-semibold text-gray-800 mb-4">
             Quick Links
           </h2>
-          <div className="space-y-3">
+          <div className="flex flex-col sm:flex-row sm:justify-between">
             <a
               href="/course-catalog"
               className="flex items-center gap-3 rounded-lg px-3 py-2 hover:bg-gray-50 transition"
             >
-              <FaBook className="text-gray-600" />
-              <span className="text-sm text-gray-700">Course Catalog</span>
+              <FaBook className="text-gray-600" size={25} />
+              <span className="text-md text-gray-700">Course Catalog</span>
             </a>
 
             <a
               href="/library"
               className="flex items-center gap-3 rounded-lg px-3 py-2 hover:bg-gray-50 transition"
             >
-              <FaUniversity className="text-gray-600" />
-              <span className="text-sm text-gray-700">Library Resources</span>
+              <FaUniversity className="text-gray-600" size={25} />
+              <span className="text-md text-gray-700">Library Resources</span>
             </a>
 
             <a
               href="/it-help"
               className="flex items-center gap-3 rounded-lg px-3 py-2 hover:bg-gray-50 transition"
             >
-              <FaHeadset className="text-gray-600" />
-              <span className="text-sm text-gray-700">IT Help Desk</span>
+              <FaHeadset className="text-gray-600" size={25} />
+              <span className="text-md text-gray-700">IT Help Desk</span>
             </a>
 
             <a
               href="/campus-map"
               className="flex items-center gap-3 rounded-lg px-3 py-2 hover:bg-gray-50 transition"
             >
-              <FaMapMarkedAlt className="text-gray-600" />
-              <span className="text-sm text-gray-700">Campus Map</span>
+              <FaMapMarkedAlt className="text-gray-600" size={25} />
+              <span className="text-md text-gray-700">Campus Map</span>
             </a>
           </div>
         </div>

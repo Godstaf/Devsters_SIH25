@@ -19,20 +19,16 @@ const Navbar = () => {
       <div className="w-full flex items-center justify-between px-3 md:px-6 py-4 relative">
         <div className="flex items-center gap-3">
           <SideBar_sm />
-          <a className="text-xl font-bold text-gray-900" href="/home">
-            Smart Student Hub
+          <a className="text-2xl font-bold text-gray-900" href="/home">
+            Profolio
           </a>
         </div>
         <div className="flex items-center gap-6">
           <div>
-            {theme === "light" ? (
               <IoSunnyOutline
                 size={25}
                 onClick={() => dispatch(toggleTheme())}
               />
-            ) : (
-              <FaMoon size={24} onClick={() => dispatch(toggleTheme())} />
-            )}
           </div>
           <a
             className="text-gray-600 hover:text-[#137fec] hidden md:inline"

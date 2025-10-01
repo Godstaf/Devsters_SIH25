@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import SideBar from '../layout_files/SideBar'
 import WorkShopForm from '../forms/WorkShopForm';
 import ConferenceForm from '../forms/ConferenceForm';
+import ClubForm from '../forms/ClubForm';
 
 const conferences = [
   {
@@ -55,22 +56,13 @@ const WorkCon = () => {
         <SideBar />
       </div>
       <main className="min-h-screen flex flex-col md:ml-65 mt-24 sm:mt-18 p-8 relative">
-        {wFormH && (
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex justify-center items-center">
-            <WorkShopForm wFormH={wFormH} setWFormH={setWFormH} />
-          </div>
-        )}
-        {cFormH && (
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex justify-center items-center">
-            <ConferenceForm cFormH={cFormH} setCFormH={setCFormH} />
-          </div>
-        )}
         {/* Conferences */}
         <section>
           <div className="flex items-center justify-between mb-4">
             <h2 className="text-2xl font-bold">Conferences</h2>
-            <button className="bg-purple-600 text-white px-4 py-2 rounded-lg hover:bg-purple-700"
-            onClick={()=>setCFormH(prev=>!prev)}
+            <button
+              className="bg-purple-600 text-white px-4 py-2 rounded-lg hover:bg-purple-700"
+              onClick={() => setCFormH((prev) => !prev)}
             >
               + Conferences
             </button>
@@ -89,6 +81,11 @@ const WorkCon = () => {
             ))}
           </div>
         </section>
+        {cFormH && (
+          <div className="w-full mt-4">
+            <ConferenceForm cForm={cFormH} setCFormH={setCFormH} />
+          </div>
+        )}
         {/* Workshops */}
         <section className="mt-12">
           <div className="flex items-center justify-between mb-4">
@@ -124,6 +121,11 @@ const WorkCon = () => {
             ))}
           </div>
         </section>
+        {wFormH && (
+          <div className="w-full mt-4">
+            <WorkShopForm wFormH={wFormH} setWFormH={setWFormH} />
+          </div>
+        )}
       </main>
     </div>
   );

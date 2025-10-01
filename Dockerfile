@@ -1,5 +1,3 @@
-# syntax=docker/dockerfile:1
-
 # ===== Base image with Python =====
 FROM python:3.11-slim AS base
 ENV PYTHONDONTWRITEBYTECODE=1 \
@@ -48,6 +46,7 @@ COPY --from=deps /usr/local/bin /usr/local/bin
 COPY --chown=appuser:appuser backend ./backend
 COPY --chown=appuser:appuser static ./static
 COPY --chown=appuser:appuser README.md ./README.md
+COPY --chown=appuser:appuser start.sh ./start.sh
 
 # Copy frontend build artifacts to be served by FastAPI
 COPY --chown=appuser:appuser --from=frontend /frontend/dist ./frontend
@@ -59,8 +58,8 @@ EXPOSE 8000
 ENV HOST=0.0.0.0 \
     PORT=8000
 
-# Healthcheck: basic GET /
-HEALTHCHECK --interval=30s --timeout=5s --retries=3 CMD wget -qO- http://127.0.0.1:8000/ || exit 1
+# Healthcheck: check API health endpoint
+HEALTHCHECK --interval=30s --timeout=5s --retries=3 CMD wget -qO- http://127.0.0.1:$PORT/api/health || exit 1
 
 # Run the FastAPI app with Uvicorn
-CMD ["uvicorn", "backend.main:app", "--host", "0.0.0.0", "--port", "8000"]
+CMD uvicorn backend.main:app --host 0.0.0.0 --port $PORT
