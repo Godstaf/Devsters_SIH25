@@ -23,6 +23,7 @@ async def health_check():
     except Exception as e:
         return {"status": "error", "message": str(e)}
 
+
 # Root health check endpoint (alternative)
 @app.get("/health")
 async def root_health_check():
