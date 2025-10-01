@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useSelector } from "react-redux";
 import { MdVisibility, MdVisibilityOff } from "react-icons/md";
+import toast, { Toaster } from "react-hot-toast";
 
 const LoginPage = () => {
   const { register, handleSubmit } = useForm();
@@ -9,13 +10,22 @@ const LoginPage = () => {
     const form = new FormData();
     form.append("email", data.email);
     form.append("password", data.password);
-    await fetch("http://localhost:8000/loginit", {
+    const response = await fetch("http://localhost:8000/loginit", {
       method: "POST",
       body: form,
+      credentials: "include",
     });
+    console.log(response);
+    if (response.status === 200) {
+      window.location.assign("/dashboard");
+      localStorage.setItem("userEmail", data.email);
+      toast.success("Login Successfull")
+    } else {
+      toast.error("Login Failed");
+    }
   };
   const theme = useSelector((state) => state.theme.theme);
-  const [visibility, setVisibility] = useState("false");
+  const [visibility, setVisibility] = useState(false);
 
   return (
     <div
@@ -25,6 +35,7 @@ const LoginPage = () => {
     >
       {/* bg-[#1a1a1a] */}
       <div className="relative flex min-h-screen flex-col overflow-x-hidden">
+        <Toaster position="top-center mt-24" reverseOrder={false} />
         <div className="flex h-full grow flex-col">
           <main className="flex flex-1 items-stretch">
             <div className="flex-1 flex items-center justify-center py-10 sm:py-16">

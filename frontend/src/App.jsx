@@ -19,8 +19,35 @@ import IntegrationSupport from './components/pages/IntegrationSupport'
 import LeadershipRoles from './components/pages/LeadershipRoles'
 import FacultyDashboard from './components/pages/FacultyDashboard'
 
+const protectedPaths = [
+  "/dashboard",
+  "/profile",
+  "/portfolio",
+  "/approvals",
+  "/internships",
+  "/workshops",
+  "/engagements",
+  "/faculty-approvals",
+  "/integration-support",
+  "/activity-tracker",
+  "/contest",
+  "/analytics",
+  "/leadershiproles",
+  "/faculty",
+  "/faculty-dashboard",
+];  
+
+const isLoggedIn = () => !!localStorage.getItem("userEmail");
+
+
 function resolvePageComponent(pathname) {
   const path = (pathname || '').toLowerCase()
+
+  if (protectedPaths.includes(path) && !isLoggedIn()) {
+    window.location.href = "/login";
+    return;
+  }
+  
   switch (path) {
     case '/':
     case '/home':
